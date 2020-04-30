@@ -15,8 +15,21 @@
 		19B7D1F1245A9A9F00824A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19B7D1EF245A9A9F00824A24 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		19D9C743245ABA6D009B42B4 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		19B7D1E1245A9A9A00824A24 /* Smart news feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart news feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19B7D1E1245A9A9A00824A24 /* SmartNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19B7D1E6245A9A9A00824A24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		19B7D1E8245A9A9A00824A24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,13 +55,14 @@
 			children = (
 				19B7D1E3245A9A9A00824A24 /* Smart news feed */,
 				19B7D1E2245A9A9A00824A24 /* Products */,
+				19D9C739245AB834009B42B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		19B7D1E2245A9A9A00824A24 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				19B7D1E1245A9A9A00824A24 /* Smart news feed.app */,
+				19B7D1E1245A9A9A00824A24 /* SmartNewsFeed.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +81,13 @@
 			path = "Smart news feed";
 			sourceTree = "<group>";
 		};
+		19D9C739245AB834009B42B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +98,8 @@
 				19B7D1DD245A9A9A00824A24 /* Sources */,
 				19B7D1DE245A9A9A00824A24 /* Frameworks */,
 				19B7D1DF245A9A9A00824A24 /* Resources */,
+				19D9C743245ABA6D009B42B4 /* Embed Libraries */,
+				19176280245AED270078575E /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -84,7 +107,7 @@
 			);
 			name = "Smart news feed";
 			productName = "Smart news feed";
-			productReference = 19B7D1E1245A9A9A00824A24 /* Smart news feed.app */;
+			productReference = 19B7D1E1245A9A9A00824A24 /* SmartNewsFeed.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,6 +155,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19176280245AED270078575E /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/VKSdkFramework.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "/ usr / local / bin / carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		19B7D1DD245A9A9A00824A24 /* Sources */ = {
@@ -286,13 +331,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQU76263MV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Smart news feed/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damirLutfullin.Smart-news-feed";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/VKSdkFramework.framework",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.damirLutfullin.SmartNewsFeed;
+				PRODUCT_NAME = SmartNewsFeed;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,13 +357,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TQU76263MV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Smart news feed/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damirLutfullin.Smart-news-feed";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/VKSdkFramework.framework",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.damirLutfullin.SmartNewsFeed;
+				PRODUCT_NAME = SmartNewsFeed;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
