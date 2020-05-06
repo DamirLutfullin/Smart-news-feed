@@ -17,6 +17,5 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.2512482107, green: 0.512022078, blue: 0.7402173281, alpha: 1)
-        networkService.getFeed()
     }
 }

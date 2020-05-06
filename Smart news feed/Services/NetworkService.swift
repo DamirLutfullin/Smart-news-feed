@@ -10,30 +10,45 @@ import Foundation
 import UIKit
 import VKSdkFramework
 
-class NetworkService {
+protocol Networking {
+    func request(path: String, params:  [String: String], completion: @escaping  (Data?, Error?) -> () )
+}
+
+class NetworkService: Networking {
     
     private let authService: AuthService
+    var components = URLComponents()
     
     init(authService: AuthService = SceneDelegate.shared.authService) {
         self.authService = authService
     }
     
-    func getFeed() {
-        var components = URLComponents()
-        
+    func request(path: String, params: [String : String], completion: @escaping (Data?, Error?) -> ()) {
         guard let token = authService.token else { return }
         let params = ["filters": "post,photo"]
         var allParams = params
         allParams["acces_token"] = token
         allParams["V"] = VKAPI.version
-        
-        components.scheme = VKAPI.scheme
-        components.host = VKAPI.host
-        components.path = VKAPI.newsFeed
-        components.queryItems = allParams.map{URLQueryItem(name: $0, value: $1)}
-        
-        let url = components.url!
-        
-        print(url)
+        let url = self.url(from: path, param: allParams)
+        let task = createDataTask(from: url, completion: completion)
+        task.resume()
+       
+    }
+    
+    private func createDataTask(from url: URL, completion: @escaping (Data?, Error?) -> ()) -> URLSessionDataTask {
+       return URLSession.shared.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.main.async {
+                    completion(data, error)
+                }
+            }
+    }
+    
+    private func url(from path: String, param: [String: String]) -> URL {
+            components.scheme = VKAPI.scheme
+            components.host = VKAPI.host
+            components.path = path
+            components.queryItems = param.map{URLQueryItem(name: $0, value: $1)}
+            
+        return components.url!
     }
 }
