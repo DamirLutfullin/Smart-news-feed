@@ -34,34 +34,25 @@ class AuthService: NSObject, VKSdkUIDelegate, VKSdkDelegate {
     
     func wakeUpSession() {
         let scope = ["offline"]
-        VKSdk.wakeUpSession(scope) { (state, error) in
+        VKSdk.wakeUpSession(scope) { [delegate] (state, error) in
             switch state {
             case .initialized:
                 print(".initialized")
                 VKSdk.authorize(scope)
             case .authorized:
                 print(".authorized")
-            case .unknown:
-                print(".unknown")
-            case .pending:
-                print(".pending")
-            case .external:
-                print(".external")
-            case .safariInApp:
-                print(".safariInApp")
-            case .webview:
-                print(".webview")
-            case .error:
-                print(".error")
+                delegate?.authServiceSignIn()
             @unknown default:
-                fatalError(error!.localizedDescription)
+                delegate?.authServiceSignInDidFail()
             }
         }
     }
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         print(#function)
-        delegate?.authServiceSignIn()
+        if result.token != nil {
+            delegate?.authServiceSignIn()
+        }
     }
     
     func vkSdkUserAuthorizationFailed() {

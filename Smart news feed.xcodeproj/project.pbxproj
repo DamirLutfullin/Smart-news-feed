@@ -103,6 +103,8 @@
 		1949D5992462A2AF00DB776D /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1949D53B2462A2AE00DB776D /* SF-Pro-Rounded-Light.otf */; };
 		1949D59A2462A2AF00DB776D /* SF-Pro-Text-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1949D53C2462A2AE00DB776D /* SF-Pro-Text-Black.otf */; };
 		1949D59B2462A2AF00DB776D /* SF-Compact-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1949D53D2462A2AF00DB776D /* SF-Compact-Display-Medium.otf */; };
+		1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949D59C2462D27D00DB776D /* FeedViewController.swift */; };
+		1949D59F2462D29000DB776D /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1949D59E2462D29000DB776D /* FeedViewController.storyboard */; };
 		197A0A8F2462961E00B01EF0 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; };
 		197A0A902462961E00B01EF0 /* VKSdkFramework.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		19B7D1E5245A9A9A00824A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */; };
@@ -223,6 +225,8 @@
 		1949D53B2462A2AE00DB776D /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
 		1949D53C2462A2AE00DB776D /* SF-Pro-Text-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Black.otf"; sourceTree = "<group>"; };
 		1949D53D2462A2AF00DB776D /* SF-Compact-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Medium.otf"; sourceTree = "<group>"; };
+		1949D59C2462D27D00DB776D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		1949D59E2462D29000DB776D /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		19B7D1E1245A9A9A00824A24 /* SmartNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -354,6 +358,24 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		1949D5A02462D33500DB776D /* FeedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1949D59C2462D27D00DB776D /* FeedViewController.swift */,
+				1949D59E2462D29000DB776D /* FeedViewController.storyboard */,
+			);
+			path = FeedViewController;
+			sourceTree = "<group>";
+		};
+		1949D5A12462D3A600DB776D /* AuthViewController */ = {
+			isa = PBXGroup;
+			children = (
+				19B7D1E8245A9A9A00824A24 /* AuthViewController.swift */,
+				1949D4DA246296FE00DB776D /* AuthViewController.storyboard */,
+			);
+			path = AuthViewController;
+			sourceTree = "<group>";
+		};
 		19B7D1D8245A9A9A00824A24 = {
 			isa = PBXGroup;
 			children = (
@@ -376,13 +398,13 @@
 			children = (
 				19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */,
 				19B7D1E6245A9A9A00824A24 /* SceneDelegate.swift */,
-				19B7D1E8245A9A9A00824A24 /* AuthViewController.swift */,
 				1949D4DC24629E5100DB776D /* Services */,
 				19B7D1ED245A9A9F00824A24 /* Assets.xcassets */,
 				19B7D1EF245A9A9F00824A24 /* LaunchScreen.storyboard */,
 				19B7D1F2245A9A9F00824A24 /* Info.plist */,
-				1949D4DA246296FE00DB776D /* AuthViewController.storyboard */,
+				1949D5A12462D3A600DB776D /* AuthViewController */,
 				1949D4DF2462A28D00DB776D /* Fonts */,
+				1949D5A02462D33500DB776D /* FeedViewController */,
 			);
 			path = "Smart news feed";
 			sourceTree = "<group>";
@@ -540,6 +562,7 @@
 				1949D54E2462A2AF00DB776D /* SF-Pro-Text-Thin.otf in Resources */,
 				1949D56D2462A2AF00DB776D /* SF-Mono-Light.otf in Resources */,
 				1949D5542462A2AF00DB776D /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				1949D59F2462D29000DB776D /* FeedViewController.storyboard in Resources */,
 				1949D5462462A2AF00DB776D /* SF-Mono-Semibold.otf in Resources */,
 				1949D54C2462A2AF00DB776D /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				1949D5612462A2AF00DB776D /* SF-Pro-Rounded-Semibold.otf in Resources */,
@@ -586,6 +609,7 @@
 			files = (
 				19B7D1E9245A9A9A00824A24 /* AuthViewController.swift in Sources */,
 				19B7D1E5245A9A9A00824A24 /* AppDelegate.swift in Sources */,
+				1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */,
 				19B7D1E7245A9A9A00824A24 /* SceneDelegate.swift in Sources */,
 				1949D4DE24629E8800DB776D /* AuthService.swift in Sources */,
 			);
