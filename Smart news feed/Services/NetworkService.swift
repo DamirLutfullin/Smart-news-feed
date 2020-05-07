@@ -27,8 +27,8 @@ class NetworkService: Networking {
         guard let token = authService.token else { return }
         let params = ["filters": "post,photo"]
         var allParams = params
-        allParams["acces_token"] = token
-        allParams["V"] = VKAPI.version
+        allParams["access_token"] = token
+        allParams["v"] = VKAPI.version
         let url = self.url(from: path, param: allParams)
         let task = createDataTask(from: url, completion: completion)
         task.resume()

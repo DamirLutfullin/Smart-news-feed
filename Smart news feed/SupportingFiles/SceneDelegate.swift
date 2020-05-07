@@ -75,7 +75,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
         let navVC = UINavigationController(rootViewController: feedVC)
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
-        
     }
     
     func authServiceSignInDidFail() {
