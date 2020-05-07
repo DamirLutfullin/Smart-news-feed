@@ -107,6 +107,7 @@
 		1949D59B2462A2AF00DB776D /* SF-Compact-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1949D53D2462A2AF00DB776D /* SF-Compact-Display-Medium.otf */; };
 		1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949D59C2462D27D00DB776D /* FeedViewController.swift */; };
 		1949D59F2462D29000DB776D /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1949D59E2462D29000DB776D /* FeedViewController.storyboard */; };
+		1964566F24640A1E00C98E5B /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1964566E24640A1E00C98E5B /* NetworkDataFetcher.swift */; };
 		19708F2E2463DBFD00861C1F /* VKFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */; };
 		197A0A8F2462961E00B01EF0 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; };
 		197A0A902462961E00B01EF0 /* VKSdkFramework.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -232,6 +233,7 @@
 		1949D53D2462A2AF00DB776D /* SF-Compact-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Display-Medium.otf"; sourceTree = "<group>"; };
 		1949D59C2462D27D00DB776D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1949D59E2462D29000DB776D /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
+		1964566E24640A1E00C98E5B /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFeedResponse.swift; sourceTree = "<group>"; };
 		197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		19B7D1E1245A9A9A00824A24 /* SmartNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 				1949D4DD24629E8800DB776D /* AuthService.swift */,
 				1933A53D2463008A0099DC6C /* NetworkService.swift */,
 				1933A53F2463063B0099DC6C /* VKAPI.swift */,
+				1964566E24640A1E00C98E5B /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				19708F2E2463DBFD00861C1F /* VKFeedResponse.swift in Sources */,
 				1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */,
 				1933A5402463063B0099DC6C /* VKAPI.swift in Sources */,
+				1964566F24640A1E00C98E5B /* NetworkDataFetcher.swift in Sources */,
 				19B7D1E7245A9A9A00824A24 /* SceneDelegate.swift in Sources */,
 				1949D4DE24629E8800DB776D /* AuthService.swift in Sources */,
 			);

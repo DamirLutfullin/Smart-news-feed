@@ -30,9 +30,10 @@ class NetworkService: Networking {
         allParams["access_token"] = token
         allParams["v"] = VKAPI.version
         let url = self.url(from: path, param: allParams)
+        print(url.description)
         let task = createDataTask(from: url, completion: completion)
         task.resume()
-       
+
     }
     
     private func createDataTask(from url: URL, completion: @escaping (Data?, Error?) -> ()) -> URLSessionDataTask {
