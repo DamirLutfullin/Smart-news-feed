@@ -17,6 +17,7 @@ protocol VKFeedCellViewModel {
     var views : String? { get }
     var shares : String? { get }
     var comments : String? { get }
+    var post : String? { get }
 }
 
 class VKNewsFeedCell: UITableViewCell {
@@ -27,6 +28,7 @@ class VKNewsFeedCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var likesLabel: UILabel!
     @IBOutlet var commentsLabel: UILabel!
+    @IBOutlet var postsLabel: UILabel!
     @IBOutlet var sharesLabel: UILabel!
     @IBOutlet var viewsLabel: UILabel!
     
@@ -48,6 +50,7 @@ class VKNewsFeedCell: UITableViewCell {
         self.likesLabel.text = viewModel.likes
         self.commentsLabel.text = viewModel.comments
         self.viewsLabel.text = viewModel.views
+        self.postsLabel.text = viewModel.post
         
     }
     
