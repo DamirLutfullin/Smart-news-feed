@@ -22,7 +22,7 @@ protocol VKFeedCellViewModel {
 class VKNewsFeedCell: UITableViewCell {
     
     static let reuseId = "vkCell"
-    @IBOutlet var iconImageView: UIImageView!
+    @IBOutlet var iconImageView: WebImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var likesLabel: UILabel!
@@ -43,6 +43,7 @@ class VKNewsFeedCell: UITableViewCell {
     }
     
     func set(viewModel: VKFeedCellViewModel) {
+        self.iconImageView.set(imageURL: viewModel.iconUrl)
         self.nameLabel.text = viewModel.name
         self.dateLabel.text = viewModel.date
         self.sharesLabel.text = viewModel.shares

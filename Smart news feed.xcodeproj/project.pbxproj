@@ -120,6 +120,7 @@
 		197A0A902462961E00B01EF0 /* VKSdkFramework.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */; };
 		199EAE12246563DC00E0EEAC /* VKNewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */; };
+		199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE142465E14000E0EEAC /* WebImageView.swift */; };
 		19B7D1E5245A9A9A00824A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */; };
 		19B7D1E7245A9A9A00824A24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B7D1E6245A9A9A00824A24 /* SceneDelegate.swift */; };
 		19B7D1E9245A9A9A00824A24 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B7D1E8245A9A9A00824A24 /* AuthViewController.swift */; };
@@ -254,6 +255,7 @@
 		197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsFeedCell.swift; sourceTree = "<group>"; };
 		199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKNewsFeedCell.xib; sourceTree = "<group>"; };
+		199EAE142465E14000E0EEAC /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		19B7D1E1245A9A9A00824A24 /* SmartNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19B7D1E6245A9A9A00824A24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -447,6 +449,14 @@
 			path = NewsFeedCell;
 			sourceTree = "<group>";
 		};
+		199EAE132465E11A00E0EEAC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				199EAE142465E14000E0EEAC /* WebImageView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		19B7D1D8245A9A9A00824A24 = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +482,7 @@
 				196456702464655F00C98E5B /* NewsFeed */,
 				1949D5A12462D3A600DB776D /* AuthViewController */,
 				1949D5A02462D33500DB776D /* FeedViewController */,
+				199EAE132465E11A00E0EEAC /* Helpers */,
 				19708F2F2463DC0A00861C1F /* Models */,
 				1949D4DC24629E5100DB776D /* Services */,
 				1949D4DF2462A28D00DB776D /* Fonts */,
@@ -681,6 +692,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19645678246465A100C98E5B /* VKNewsFeedPresenter.swift in Sources */,
+				199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */,
 				199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */,
 				1933A53E2463008A0099DC6C /* NetworkService.swift in Sources */,
 				19B7D1E9245A9A9A00824A24 /* AuthViewController.swift in Sources */,
