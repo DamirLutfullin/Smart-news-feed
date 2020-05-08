@@ -16,6 +16,8 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
 
   var interactor: VKNewsFeedBusinessLogic?
   var router: (NSObjectProtocol & VKNewsFeedRoutingLogic)?
+    private var feedViewModel = FeedViewModel(cells: [])
+    
 
     @IBOutlet var table: UITableView!
     
@@ -44,32 +46,33 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     setup()
     table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     table.register(UINib(nibName: "VKNewsFeedCell", bundle: nil), forCellReuseIdentifier: VKNewsFeedCell.reuseId)
+    interactor?.makeRequest(request: .getNewsFeed)
+
   }
   
   func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData) {
     switch viewModel {
-    case .some:
-        print("displayData from viewModel .some")
-    case .displayNewsFeed:
-        print("displayData from viewModel .displayNewsFeed")
+    case .displayNewsFeed(feedViewModel: let feedViewModel):
+        self.feedViewModel = feedViewModel
+        table.reloadData()
     }
   }
-  
 }
 
 extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        feedViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: VKNewsFeedCell.reuseId, for: indexPath) as! VKNewsFeedCell
+        cell.set(viewModel: feedViewModel.cells[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        interactor?.makeRequest(request: .getFeed)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

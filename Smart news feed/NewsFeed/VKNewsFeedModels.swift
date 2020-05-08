@@ -13,22 +13,34 @@ enum VKNewsFeed {
   enum Model {
     struct Request {
       enum RequestType {
-        case some
-        case getFeed
+        case getNewsFeed
       }
     }
     struct Response {
       enum ResponseType {
-        case some
-        case presentNewsFeed
+        case presentNewsFeed (feedResponse: FeedResponse)
       }
     }
     struct ViewModel {
       enum ViewModelData {
-        case some
-        case displayNewsFeed
+        case displayNewsFeed(feedViewModel: FeedViewModel)
       }
     }
   }
   
+}
+
+struct FeedViewModel {
+    struct Cell: VKFeedCellViewModel {
+        var iconUrl: String
+        var name: String
+        var date: String
+        var text: String?
+        var likes: String?
+        var views: String?
+        var shares: String?
+        var comments: String?
+        var post: String?
+    }
+    let cells: [Cell]
 }
