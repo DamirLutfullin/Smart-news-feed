@@ -17,6 +17,13 @@ protocol VKFeedCellViewModel {
     var shares : String? { get }
     var comments : String? { get }
     var post : String? { get }
+    var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+}
+
+protocol FeedCellPhotoAttachmentViewModel {
+    var photoUrlString: String? {get}
+    var width: Int {get}
+    var height: Int {get}
 }
 
 class VKNewsFeedCell: UITableViewCell {
@@ -30,10 +37,12 @@ class VKNewsFeedCell: UITableViewCell {
     @IBOutlet var postsLabel: UILabel!
     @IBOutlet var sharesLabel: UILabel!
     @IBOutlet var viewsLabel: UILabel!
+    @IBOutlet var postImageView: WebImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        iconImageView.layer.cornerRadius = iconImageView.frame.height / 2
+        iconImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,7 +60,12 @@ class VKNewsFeedCell: UITableViewCell {
         self.commentsLabel.text = viewModel.comments
         self.viewsLabel.text = viewModel.views
         self.postsLabel.text = viewModel.post
-        
+        if let photoAttachment = viewModel.photoAttachment{
+            postImageView.isHidden = false
+            postImageView.set(imageURL: photoAttachment.photoUrlString)
+        } else {
+            postImageView.isHidden = true
+        }
     }
     
 }
