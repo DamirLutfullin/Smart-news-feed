@@ -24,6 +24,8 @@ protocol VKFeedCellViewModel {
 protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
     var AttachmentFrame: CGRect { get }
+    var buttonViewL: CGRect { get }
+    var totalHeight: CGFloat { get }
 }
 
 protocol FeedCellPhotoAttachmentViewModel {
@@ -45,6 +47,7 @@ class VKNewsFeedCell: UITableViewCell {
     @IBOutlet var viewsLabel: UILabel!
     @IBOutlet var postImageView: WebImageView!
     @IBOutlet var cardView: UIView!
+    @IBOutlet var buttonView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,13 +58,7 @@ class VKNewsFeedCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+ 
     func set(viewModel: VKFeedCellViewModel) {
         self.iconImageView.set(imageURL: viewModel.iconUrl)
         self.nameLabel.text = viewModel.name
@@ -74,6 +71,7 @@ class VKNewsFeedCell: UITableViewCell {
         
         postsLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.AttachmentFrame
+        buttonView.frame = viewModel.sizes.buttonViewL
         
         if let photoAttachment = viewModel.photoAttachment{
             postImageView.isHidden = false
@@ -81,7 +79,5 @@ class VKNewsFeedCell: UITableViewCell {
         } else {
             postImageView.isHidden = true
         }
-        
     }
-    
 }

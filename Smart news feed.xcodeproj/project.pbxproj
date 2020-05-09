@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191933472466E29700450C8F /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191933462466E29700450C8F /* String + Height.swift */; };
 		1933A53E2463008A0099DC6C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53D2463008A0099DC6C /* NetworkService.swift */; };
 		1933A5402463063B0099DC6C /* VKAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53F2463063B0099DC6C /* VKAPI.swift */; };
 		1949D4DB246296FE00DB776D /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1949D4DA246296FE00DB776D /* AuthViewController.storyboard */; };
@@ -144,6 +145,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		191933462466E29700450C8F /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		1933A53D2463008A0099DC6C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1933A53F2463063B0099DC6C /* VKAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAPI.swift; sourceTree = "<group>"; };
 		1949D4DA246296FE00DB776D /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		196456702464655F00C98E5B /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */,
 				199EAE0E2465639900E0EEAC /* NewsFeedCell */,
 				1964567F24655A6200C98E5B /* VKNewsFeedViewController.storyboard */,
 				19645675246465A100C98E5B /* VKNewsFeedViewController.swift */,
@@ -428,7 +431,6 @@
 		19708F2F2463DC0A00861C1F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -456,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				199EAE142465E14000E0EEAC /* WebImageView.swift */,
+				191933462466E29700450C8F /* String + Height.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -485,9 +488,9 @@
 				196456702464655F00C98E5B /* NewsFeed */,
 				1949D5A12462D3A600DB776D /* AuthViewController */,
 				1949D5A02462D33500DB776D /* FeedViewController */,
+				1949D4DC24629E5100DB776D /* Services */,
 				199EAE132465E11A00E0EEAC /* Helpers */,
 				19708F2F2463DC0A00861C1F /* Models */,
-				1949D4DC24629E5100DB776D /* Services */,
 				1949D4DF2462A28D00DB776D /* Fonts */,
 				19708F302463DC4000861C1F /* SupportingFiles */,
 			);
@@ -705,6 +708,7 @@
 				1964567A246465A100C98E5B /* VKNewsFeedRouter.swift in Sources */,
 				19645679246465A100C98E5B /* VKNewsFeedWorker.swift in Sources */,
 				1964567B246465A100C98E5B /* VKNewsFeedModels.swift in Sources */,
+				191933472466E29700450C8F /* String + Height.swift in Sources */,
 				19708F2E2463DBFD00861C1F /* VKFeedResponse.swift in Sources */,
 				1964567C246465A100C98E5B /* VKNewsFeedViewController.swift in Sources */,
 				1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */,
