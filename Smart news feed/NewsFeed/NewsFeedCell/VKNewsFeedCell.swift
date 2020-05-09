@@ -38,11 +38,16 @@ class VKNewsFeedCell: UITableViewCell {
     @IBOutlet var sharesLabel: UILabel!
     @IBOutlet var viewsLabel: UILabel!
     @IBOutlet var postImageView: WebImageView!
+    @IBOutlet var cardView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.layer.cornerRadius = iconImageView.frame.height / 2
         iconImageView.clipsToBounds = true
+        cardView.layer.cornerRadius = 10
+        cardView.clipsToBounds = true
+        backgroundColor = .clear
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

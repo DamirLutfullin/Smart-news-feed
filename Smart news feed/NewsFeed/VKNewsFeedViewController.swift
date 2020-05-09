@@ -47,6 +47,9 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     table.register(UINib(nibName: "VKNewsFeedCell", bundle: nil), forCellReuseIdentifier: VKNewsFeedCell.reuseId)
     interactor?.makeRequest(request: .getNewsFeed)
+    table.separatorStyle = .none
+    table.backgroundColor = .clear
+    view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
 
   }
   
@@ -76,7 +79,7 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 312
+        return 230
     }
     
     
