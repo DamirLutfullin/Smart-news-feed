@@ -27,7 +27,6 @@ enum VKNewsFeed {
       }
     }
   }
-  
 }
 
 struct FeedViewModel {

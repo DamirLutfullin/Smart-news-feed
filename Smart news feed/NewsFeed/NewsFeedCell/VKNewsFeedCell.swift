@@ -71,11 +71,13 @@ class VKNewsFeedCell: UITableViewCell {
         
         postsLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.AttachmentFrame
-       // buttonView.frame = viewModel.sizes.bottonView
-        
+        buttonView.frame = viewModel.sizes.bottonView
+
         if let photoAttachment = viewModel.photoAttachment{
             postImageView.isHidden = false
             postImageView.set(imageURL: photoAttachment.photoUrlString)
+            postImageView.layer.cornerRadius = 20
+            //postImageView.image?.
         } else {
             postImageView.isHidden = true
         }
