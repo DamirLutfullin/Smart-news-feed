@@ -24,7 +24,7 @@ protocol VKFeedCellViewModel {
 protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
     var AttachmentFrame: CGRect { get }
-    var buttonViewL: CGRect { get }
+    var bottonView: CGRect { get }
     var totalHeight: CGFloat { get }
 }
 
@@ -71,7 +71,7 @@ class VKNewsFeedCell: UITableViewCell {
         
         postsLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.AttachmentFrame
-        buttonView.frame = viewModel.sizes.buttonViewL
+       // buttonView.frame = viewModel.sizes.bottonView
         
         if let photoAttachment = viewModel.photoAttachment{
             postImageView.isHidden = false

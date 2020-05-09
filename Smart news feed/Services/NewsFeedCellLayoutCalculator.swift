@@ -20,7 +20,7 @@ struct Constants {
 }
 
 struct Sizes: FeedCellSizes {
-    var buttonViewL: CGRect
+    var bottonView: CGRect
     var postLabelFrame: CGRect
     var AttachmentFrame: CGRect
     var totalHeight: CGFloat
@@ -47,7 +47,7 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
             postLabelFrame.size = CGSize(width: width, height: height)
         }
         
-        return  Sizes(buttonViewL: CGRect.zero,
+        return  Sizes(bottonView: CGRect.zero,
                       postLabelFrame: postLabelFrame,
                       AttachmentFrame: CGRect.zero,
                       totalHeight: 300 + postLabelFrame.height)
