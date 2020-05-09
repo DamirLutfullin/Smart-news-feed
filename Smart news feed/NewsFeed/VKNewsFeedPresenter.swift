@@ -14,6 +14,9 @@ protocol VKNewsFeedPresentationLogic {
 
 class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
     weak var viewController: VKNewsFeedDisplayLogic?
+    
+    var cellLayoutCalculator: FeedCellLayoutCaculatorProtocol = FeedCellLayoutCaculator()
+    
     let dateFormater: DateFormatter = {
         let df = DateFormatter()
         df.locale = Locale(identifier: "Ru_ru")
@@ -38,6 +41,8 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
         let profile = self.profile(from: feedItem.sourceId, profiles: profiles, groups: groups)
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormater.string(from: date)
+        let photoAttachments = self.photoAttachment(feedItem: feedItem)
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachments)
         return FeedViewModel.Cell.init(iconUrl: profile.photo,
                                        name: profile.name,
                                        date: dateTitle,
@@ -46,7 +51,8 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
                                        shares: feedItem.reposts?.count.description ?? "0",
                                        comments: feedItem.comments?.count.description ?? "0",
                                        post: feedItem.text,
-                                       photoAttachment: photoAttachment(feedItem: feedItem))
+                                       photoAttachment: photoAttachment(feedItem: feedItem),
+                                       sizes: sizes)
     }
     
     private func profile(from sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable {

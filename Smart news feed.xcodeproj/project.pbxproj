@@ -121,6 +121,7 @@
 		199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */; };
 		199EAE12246563DC00E0EEAC /* VKNewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */; };
 		199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE142465E14000E0EEAC /* WebImageView.swift */; };
+		199EAE172466C9C800E0EEAC /* NewsFeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE162466C9C800E0EEAC /* NewsFeedCellLayoutCalculator.swift */; };
 		19B7D1E5245A9A9A00824A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */; };
 		19B7D1E7245A9A9A00824A24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B7D1E6245A9A9A00824A24 /* SceneDelegate.swift */; };
 		19B7D1E9245A9A9A00824A24 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B7D1E8245A9A9A00824A24 /* AuthViewController.swift */; };
@@ -256,6 +257,7 @@
 		199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsFeedCell.swift; sourceTree = "<group>"; };
 		199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKNewsFeedCell.xib; sourceTree = "<group>"; };
 		199EAE142465E14000E0EEAC /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		199EAE162466C9C800E0EEAC /* NewsFeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		19B7D1E1245A9A9A00824A24 /* SmartNewsFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartNewsFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B7D1E4245A9A9A00824A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19B7D1E6245A9A9A00824A24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		1949D4DC24629E5100DB776D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				199EAE162466C9C800E0EEAC /* NewsFeedCellLayoutCalculator.swift */,
 				1949D4DD24629E8800DB776D /* AuthService.swift */,
 				1933A53D2463008A0099DC6C /* NetworkService.swift */,
 				1933A53F2463063B0099DC6C /* VKAPI.swift */,
@@ -695,6 +698,7 @@
 				199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */,
 				199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */,
 				1933A53E2463008A0099DC6C /* NetworkService.swift in Sources */,
+				199EAE172466C9C800E0EEAC /* NewsFeedCellLayoutCalculator.swift in Sources */,
 				19B7D1E9245A9A9A00824A24 /* AuthViewController.swift in Sources */,
 				1964567D246465A100C98E5B /* VKNewsFeedInteractor.swift in Sources */,
 				19B7D1E5245A9A9A00824A24 /* AppDelegate.swift in Sources */,

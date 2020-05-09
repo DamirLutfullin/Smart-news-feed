@@ -18,6 +18,12 @@ protocol VKFeedCellViewModel {
     var comments : String? { get }
     var post : String? { get }
     var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var sizes: FeedCellSizes { get }
+}
+
+protocol FeedCellSizes {
+    var postLabelFrame: CGRect { get }
+    var AttachmentFrame: CGRect { get }
 }
 
 protocol FeedCellPhotoAttachmentViewModel {
@@ -65,12 +71,17 @@ class VKNewsFeedCell: UITableViewCell {
         self.commentsLabel.text = viewModel.comments
         self.viewsLabel.text = viewModel.views
         self.postsLabel.text = viewModel.post
+        
+        postsLabel.frame = viewModel.sizes.postLabelFrame
+        postImageView.frame = viewModel.sizes.AttachmentFrame
+        
         if let photoAttachment = viewModel.photoAttachment{
             postImageView.isHidden = false
             postImageView.set(imageURL: photoAttachment.photoUrlString)
         } else {
             postImageView.isHidden = true
         }
+        
     }
     
 }
