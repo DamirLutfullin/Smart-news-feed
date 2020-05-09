@@ -20,11 +20,10 @@ struct Constants {
 
     static let bottomViewHeight = CGFloat(53)
     static let postLabelFont = UIFont.systemFont(ofSize: 15)
-    static let constantHeight = Constants.topViewHeight + Constants.bottomViewHeight + 8 + 8 + 8
 }
 
 struct Sizes: FeedCellSizes {
-    var bottonView: CGRect
+    var bottonViewFrame: CGRect
     var postLabelFrame: CGRect
     var AttachmentFrame: CGRect
     var totalHeight: CGFloat
@@ -49,30 +48,26 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
             let height = text.height(width: width, font: Constants.postLabelFont)
             postLabelFrame.size = CGSize(width: width, height: height)
         }
+        
         //MARK: Работа с фото
-        var photoHeight: CGFloat = 0
-        var photoWidth: CGFloat = 0
-        var imageFrame = CGRect.zero
+        
+        let attachmentTop = postLabelFrame.size == .zero ? Constants.postLabelInsest.top : postLabelFrame.maxY + Constants.postLabelInsest.bottom
+        var attachmentFrame = CGRect(origin: CGPoint(x: 0, y: attachmentTop), size: .zero)
+        
         if let photo = photoAttachment {
-            photoHeight = CGFloat(photo.height)
-            photoWidth = CGFloat(photo.width)
-            imageFrame = CGRect(origin: CGPoint(x: Constants.postLabelInsest.left, y: postLabelFrame.origin.y + 8 + postLabelFrame.height), size: CGSize(width: width, height: photoHeight / (photoWidth / width)))
+            attachmentFrame.size = CGSize(width: cardViewWidth, height: CGFloat(photo.height) / (CGFloat(photo.width) / CGFloat(cardViewWidth)))
         }
         
         //MARK: ставим бот вью на место
-        let bottomOriginY: CGFloat = {
-            if photoHeight != 0 {
-                return imageFrame.origin.y + CGFloat(8) + imageFrame.height
-            } else {
-                return postLabelFrame.origin.y + postLabelFrame.height + 8
-            }
-        }()
+        let bottomOriginY: CGFloat = max(attachmentFrame.maxY, postLabelFrame.maxY )
+        let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomOriginY), size: CGSize(width: cardViewWidth, height: 53))
         
-        let bottomViewFrame = CGRect(origin: CGPoint(x: Constants.cardInsest.left, y: bottomOriginY), size: CGSize(width: width, height: 53))
+        //MARK: работа с финальной высотой
+        let totalHeight = bottomViewFrame.maxY + Constants.cardInsest.bottom
         
-        return  Sizes(bottonView: bottomViewFrame,
+        return  Sizes(bottonViewFrame: bottomViewFrame,
                       postLabelFrame: postLabelFrame,
-                      AttachmentFrame: imageFrame,
-                      totalHeight:  bottomViewFrame.origin.y + 53 + 8)
+                      AttachmentFrame: attachmentFrame,
+                      totalHeight:  totalHeight)
     }
 }

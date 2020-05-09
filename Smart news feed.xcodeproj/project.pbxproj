@@ -415,7 +415,7 @@
 		196456702464655F00C98E5B /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
-				19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */,
+				19708F2F2463DC0A00861C1F /* Models */,
 				199EAE0E2465639900E0EEAC /* NewsFeedCell */,
 				1964567F24655A6200C98E5B /* VKNewsFeedViewController.storyboard */,
 				19645675246465A100C98E5B /* VKNewsFeedViewController.swift */,
@@ -431,6 +431,7 @@
 		19708F2F2463DC0A00861C1F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -490,7 +491,6 @@
 				1949D5A02462D33500DB776D /* FeedViewController */,
 				1949D4DC24629E5100DB776D /* Services */,
 				199EAE132465E11A00E0EEAC /* Helpers */,
-				19708F2F2463DC0A00861C1F /* Models */,
 				1949D4DF2462A28D00DB776D /* Fonts */,
 				19708F302463DC4000861C1F /* SupportingFiles */,
 			);

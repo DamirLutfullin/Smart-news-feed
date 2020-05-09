@@ -24,7 +24,7 @@ protocol VKFeedCellViewModel {
 protocol FeedCellSizes {
     var postLabelFrame: CGRect { get }
     var AttachmentFrame: CGRect { get }
-    var bottonView: CGRect { get }
+    var bottonViewFrame: CGRect { get }
     var totalHeight: CGFloat { get }
 }
 
@@ -58,6 +58,11 @@ class VKNewsFeedCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
     }
+    
+    override func prepareForReuse() {
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
  
     func set(viewModel: VKFeedCellViewModel) {
         self.iconImageView.set(imageURL: viewModel.iconUrl)
@@ -71,13 +76,11 @@ class VKNewsFeedCell: UITableViewCell {
         
         postsLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.AttachmentFrame
-        buttonView.frame = viewModel.sizes.bottonView
+        buttonView.frame = viewModel.sizes.bottonViewFrame
 
         if let photoAttachment = viewModel.photoAttachment{
             postImageView.isHidden = false
             postImageView.set(imageURL: photoAttachment.photoUrlString)
-            postImageView.layer.cornerRadius = 20
-            //postImageView.image?.
         } else {
             postImageView.isHidden = true
         }
