@@ -44,13 +44,12 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
-    table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     table.register(UINib(nibName: "VKNewsFeedCell", bundle: nil), forCellReuseIdentifier: VKNewsFeedCell.reuseId)
+    table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
     interactor?.makeRequest(request: .getNewsFeed)
     table.separatorStyle = .none
     table.backgroundColor = .clear
     view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-
   }
   
   func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData) {
@@ -69,18 +68,17 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: VKNewsFeedCell.reuseId, for: indexPath) as! VKNewsFeedCell
+//        let cell = table.dequeueReusableCell(withIdentifier: VKNewsFeedCell.reuseId, for: indexPath) as! VKNewsFeedCell
+//        cell.set(viewModel: feedViewModel.cells[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCodeCell.reuseId, for: indexPath) as! NewsFeedCodeCell
         cell.set(viewModel: feedViewModel.cells[indexPath.row])
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellViewModel = feedViewModel.cells[indexPath.row]
-        return cellViewModel.sizes.totalHeight
+//        let cellViewModel = feedViewModel.cells[indexPath.row]
+//        return cellViewModel.sizes.totalHeight
+        feedViewModel.cells[indexPath.row].sizes.totalHeight
     }
     
     

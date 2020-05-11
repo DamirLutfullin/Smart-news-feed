@@ -13,13 +13,11 @@ protocol FeedCellLayoutCaculatorProtocol {
 }
 
 struct Constants {
-    static let cardInsest = UIEdgeInsets(top: 0, left: 8, bottom: 12, right: 8)
-    static let topViewHeight = CGFloat(52)
-    static let postLabelInsest = UIEdgeInsets(top: 8 + Constants.topViewHeight + 8, left: 8, bottom: 8, right: 8)
-    
-
-    static let bottomViewHeight = CGFloat(53)
+    static let cardInsets = UIEdgeInsets(top: 16, left: 8, bottom: 8, right: 8)
+    static let topViewHeight: CGFloat = 60
+    static let postLabelInsets = UIEdgeInsets(top: 8 + Constants.topViewHeight + 8, left: 8, bottom: 8, right: 8)
     static let postLabelFont = UIFont.systemFont(ofSize: 15)
+    static let bottomViewHeight: CGFloat = 44
 }
 
 struct Sizes: FeedCellSizes {
@@ -39,19 +37,18 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
     
     func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes {
         
-        let cardViewWidth = screenWidth - Constants.cardInsest.left - Constants.cardInsest.right
-        let width = cardViewWidth - Constants.postLabelInsest.left - Constants.postLabelInsest.left
+        let cardViewWidth = screenWidth - Constants.cardInsets.left - Constants.cardInsets.right
+        let width = cardViewWidth - Constants.postLabelInsets.left - Constants.postLabelInsets.left
         
         //MARK: Работа с пост лейбл фрейм
-        var postLabelFrame = CGRect(origin: CGPoint(x: Constants.postLabelInsest.left, y: Constants.postLabelInsest.top), size: CGSize.zero)
+        var postLabelFrame = CGRect(origin: CGPoint(x: Constants.postLabelInsets.left, y: Constants.postLabelInsets.top), size: CGSize.zero)
         if let text = postText, !text.isEmpty {
             let height = text.height(width: width, font: Constants.postLabelFont)
             postLabelFrame.size = CGSize(width: width, height: height)
         }
         
         //MARK: Работа с фото
-        
-        let attachmentTop = postLabelFrame.size == .zero ? Constants.postLabelInsest.top : postLabelFrame.maxY + Constants.postLabelInsest.bottom
+        let attachmentTop = postLabelFrame.size == .zero ? Constants.postLabelInsets.top : postLabelFrame.maxY + Constants.postLabelInsets.bottom
         var attachmentFrame = CGRect(origin: CGPoint(x: 0, y: attachmentTop), size: .zero)
         
         if let photo = photoAttachment {
@@ -63,7 +60,7 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomOriginY), size: CGSize(width: cardViewWidth, height: 53))
         
         //MARK: работа с финальной высотой
-        let totalHeight = bottomViewFrame.maxY + Constants.cardInsest.bottom
+        let totalHeight = bottomViewFrame.maxY + Constants.cardInsets.bottom + Constants.cardInsets.top
         
         return  Sizes(bottonViewFrame: bottomViewFrame,
                       postLabelFrame: postLabelFrame,
