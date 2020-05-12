@@ -42,6 +42,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         button.setTitle("показать полностью...", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.setTitleColor(#colorLiteral(red: 0.1138304099, green: 0.5649178028, blue: 0.9794030786, alpha: 1), for: .normal)
+        button.titleLabel?.textAlignment = .left
         return button
     }()
     
@@ -139,18 +140,25 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
         return label
     }()
     
     //MARK: Set func
     func set(viewModel: VKFeedCellViewModel) {
+        if var view = viewModel.views, Double(view)! > 1000 {
+           let viewsDouble = Double(view)! / 1000
+            view = String(format: "%.1f", viewsDouble) + "K"
+            self.viewsLabel.text = view
+        } else {
+            self.viewsLabel.text = viewModel.views
+        }
         self.iconImage.set(imageURL: viewModel.iconUrl)
         self.nameLabel.text = viewModel.name
         self.dateLabel.text = viewModel.date
         self.repostLabel.text = viewModel.shares
         self.likesLabel.text = viewModel.likes
         self.commentsLabel.text = viewModel.comments
-        self.viewsLabel.text = viewModel.views
         self.postsLabel.text = viewModel.post
         
         postsLabel.frame = viewModel.sizes.postLabelFrame
