@@ -261,6 +261,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         commentsLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         commentsLabel.widthAnchor.constraint(equalToConstant: 44).isActive = true
         commentsLabel.leadingAnchor.constraint(equalTo: commentsImage.trailingAnchor, constant: 4).isActive = true
+        commentsLabel.sizeToFit()
         
         repostImage.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         repostImage.heightAnchor.constraint(equalToConstant: likesImage.image?.size.height ?? 0).isActive = true
@@ -271,7 +272,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         repostLabel.leadingAnchor.constraint(equalTo: repostImage.trailingAnchor, constant: 4).isActive = true
         
         viewsLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
-        viewsLabel.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        viewsLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 12).isActive = true
         viewsLabel.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -16).isActive = true
         
         
