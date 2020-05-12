@@ -61,7 +61,11 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
   }
 }
 
-extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
+extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, ShowFullTextButtonDelegate {
+    
+    func revealText() {
+        print("reveal text from UIController")
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         feedViewModel.cells.count
@@ -71,6 +75,7 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
 //        let cell = table.dequeueReusableCell(withIdentifier: VKNewsFeedCell.reuseId, for: indexPath) as! VKNewsFeedCell
 //        cell.set(viewModel: feedViewModel.cells[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCodeCell.reuseId, for: indexPath) as! NewsFeedCodeCell
+        cell.showFullTextDelegate = self
         cell.set(viewModel: feedViewModel.cells[indexPath.row])
         cell.backgroundColor = .clear
         return cell
@@ -81,6 +86,5 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
 //        return cellViewModel.sizes.totalHeight
         feedViewModel.cells[indexPath.row].sizes.totalHeight
     }
-    
     
 }

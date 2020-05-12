@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol ShowFullTextButtonDelegate: class {
+    func revealText()
+}
+
 final class NewsFeedCodeCell: UITableViewCell {
-    
+
     static let reuseId = "newsFeedCodeCell"
+    
+    weak var showFullTextDelegate: ShowFullTextButtonDelegate? = nil
     
     //MARK: first layer
     let cardView: UIView = {
@@ -27,7 +33,6 @@ final class NewsFeedCodeCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false // чтобы разрешить компилятору закреплять данный вью на экране
         return view
     }()
-    
     let postsLabel: UILabel = {
         let label = UILabel()
         // label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +41,6 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.textColor = #colorLiteral(red: 0.2366705537, green: 0.2514012158, blue: 0.2652153969, alpha: 1)
         return label
     }()
-    
     let showFullTextButton: UIButton = {
         let button = UIButton()
         button.setTitle("показать полностью...", for: .normal)
@@ -45,20 +49,17 @@ final class NewsFeedCodeCell: UITableViewCell {
         button.titleLabel?.textAlignment = .left
         return button
     }()
-    
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         //    imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9098039216, alpha: 1)
         return imageView
     }()
-    
     let bottomView: UIView = {
         let view = UIView()
         //   view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     
     //MARK: third layer
     // to topView
@@ -174,6 +175,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         }
     }
     
+    //MARK: Init()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -184,20 +186,27 @@ final class NewsFeedCodeCell: UITableViewCell {
         overlayFirstLayer()
         overlaySecondLayer()
         overlayThirdLayer()
+        
+        showFullTextButton.addTarget(self, action: #selector(showFullTextButtonPressed), for: .touchUpInside)
     }
     
+    @objc func showFullTextButtonPressed () {
+        print("button in code sell pressed")
+        showFullTextDelegate?.revealText()
+    }
+
     override func prepareForReuse() {
         iconImage.set(imageURL: nil)
         postImageView.set(imageURL: nil)
     }
     
-    // overlay card view
+    //MARK: overlay card view
     private func overlayFirstLayer() {
         addSubview(cardView)
         cardView.fillSuperview(padding: Constants.cardInsets)
     }
     
-    // overlay second view
+    //MARK: overlay second view
     private func overlaySecondLayer() {
         // top view constreints
         cardView.addSubview(topView)
@@ -214,7 +223,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.addSubview(bottomView)
     }
     
-    // overlay third view
+    //MARK: overlay third view
     private func overlayThirdLayer() {
         //to top view
         topView.addSubview(iconImage)
@@ -280,11 +289,8 @@ final class NewsFeedCodeCell: UITableViewCell {
         viewsImage.heightAnchor.constraint(equalToConstant: likesImage.image?.size.height ?? 0).isActive = true
         viewsImage.trailingAnchor.constraint(equalTo: viewsLabel.leadingAnchor, constant: -4).isActive = true
         
-        
     }
-    
-    
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
