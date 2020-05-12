@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ShowFullTextButtonDelegate: class {
-    func revealText()
+    func revealText(cell: NewsFeedCodeCell)
 }
 
 final class NewsFeedCodeCell: UITableViewCell {
@@ -191,8 +191,8 @@ final class NewsFeedCodeCell: UITableViewCell {
     }
     
     @objc func showFullTextButtonPressed () {
-        print("button in code sell pressed")
-        showFullTextDelegate?.revealText()
+        showFullTextDelegate?.revealText(cell: self)
+        print("cell frpm cpde")
     }
 
     override func prepareForReuse() {
@@ -283,7 +283,6 @@ final class NewsFeedCodeCell: UITableViewCell {
         viewsLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         viewsLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 12).isActive = true
         viewsLabel.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -16).isActive = true
-        
         
         viewsImage.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
         viewsImage.heightAnchor.constraint(equalToConstant: likesImage.image?.size.height ?? 0).isActive = true

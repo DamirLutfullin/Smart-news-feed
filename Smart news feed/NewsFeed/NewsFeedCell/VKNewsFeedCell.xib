@@ -130,6 +130,7 @@
                                         </subviews>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,6 +153,11 @@
             </connections>
             <point key="canvasLocation" x="159.42028985507247" y="112.16517857142857"/>
         </tableViewCell>
+        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="G5o-8e-wQM">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="2"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <point key="canvasLocation" x="641" y="46"/>
+        </progressView>
     </objects>
     <resources>
         <image name="comment" width="24" height="24"/>

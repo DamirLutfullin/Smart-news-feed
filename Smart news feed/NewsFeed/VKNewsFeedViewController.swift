@@ -63,8 +63,8 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
 
 extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, ShowFullTextButtonDelegate {
     
-    func revealText() {
-        print("reveal text from UIController")
+    func revealText(cell: NewsFeedCodeCell) {
+        print("UIController")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +78,7 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, 
         cell.showFullTextDelegate = self
         cell.set(viewModel: feedViewModel.cells[indexPath.row])
         cell.backgroundColor = .clear
+        
         return cell
     }
 
