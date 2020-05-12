@@ -20,12 +20,14 @@ final class NewsFeedCodeCell: UITableViewCell {
         view.layer.cornerRadius = 15
         return view
     }()
+    
     // MARK: second layer
     let topView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false // чтобы разрешить компилятору закреплять данный вью на экране
         return view
     }()
+    
     let postsLabel: UILabel = {
         let label = UILabel()
         // label.translatesAutoresizingMaskIntoConstraints = false
@@ -34,12 +36,22 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.textColor = #colorLiteral(red: 0.2366705537, green: 0.2514012158, blue: 0.2652153969, alpha: 1)
         return label
     }()
+    
+    let showFullTextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("показать полностью...", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.setTitleColor(#colorLiteral(red: 0.1138304099, green: 0.5649178028, blue: 0.9794030786, alpha: 1), for: .normal)
+        return button
+    }()
+    
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         //    imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9098039216, alpha: 1)
         return imageView
     }()
+    
     let bottomView: UIView = {
         let view = UIView()
         //   view.translatesAutoresizingMaskIntoConstraints = false
@@ -144,6 +156,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         postsLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.AttachmentFrame
         bottomView.frame = viewModel.sizes.bottonViewFrame
+        showFullTextButton.frame = viewModel.sizes.showFullTextButtonFrame
         
         if let photoAttachment = viewModel.photoAttachment{
             postImageView.isHidden = false
@@ -155,6 +168,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         
         iconImage.layer.cornerRadius = Constants.topViewHeight / 2
         iconImage.clipsToBounds = true
@@ -188,6 +202,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         
         cardView.addSubview(postsLabel)
         cardView.addSubview(postImageView)
+        cardView.addSubview(showFullTextButton)
         cardView.addSubview(bottomView)
     }
     
