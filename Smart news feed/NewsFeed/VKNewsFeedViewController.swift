@@ -72,6 +72,7 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
 //        cell.set(viewModel: feedViewModel.cells[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCodeCell.reuseId, for: indexPath) as! NewsFeedCodeCell
         cell.set(viewModel: feedViewModel.cells[indexPath.row])
+        cell.backgroundColor = .clear
         return cell
     }
 

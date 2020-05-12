@@ -16,34 +16,33 @@ final class NewsFeedCodeCell: UITableViewCell {
     let cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false // чтобы разрешить компилятору закреплять данный вью на экране
-        view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.layer.cornerRadius = 15
         return view
     }()
     // MARK: second layer
     let topView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false // чтобы разрешить компилятору закреплять данный вью на экране
-        view.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         return view
     }()
     let postsLabel: UILabel = {
         let label = UILabel()
-       // label.translatesAutoresizingMaskIntoConstraints = false
+        // label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Constants.postLabelFont
-        label.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        label.numberOfLines = 0
         label.textColor = #colorLiteral(red: 0.2366705537, green: 0.2514012158, blue: 0.2652153969, alpha: 1)
         return label
     }()
     let postImageView: WebImageView = {
         let imageView = WebImageView()
-    //    imageView.translatesAutoresizingMaskIntoConstraints = false
+        //    imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9098039216, alpha: 1)
         return imageView
     }()
     let bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
-     //   view.translatesAutoresizingMaskIntoConstraints = false
+        //   view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -53,14 +52,12 @@ final class NewsFeedCodeCell: UITableViewCell {
     let iconImage: WebImageView = {
         let imageView = WebImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         return imageView
     }()
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.backgroundColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
         label.textColor = #colorLiteral(red: 0.227329582, green: 0.2323184013, blue: 0.2370472848, alpha: 1)
         label.numberOfLines = 0
         return label
@@ -69,7 +66,6 @@ final class NewsFeedCodeCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 12)
-        label.backgroundColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
         label.numberOfLines = 0
         return label
@@ -103,46 +99,55 @@ final class NewsFeedCodeCell: UITableViewCell {
     
     let likesLabel: UILabel = {
         let label = UILabel()
-        
+        label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     let commentsLabel: UILabel = {
         let label = UILabel()
-        
+        label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     let repostLabel: UILabel = {
         let label = UILabel()
-        
+        label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     let viewsLabel: UILabel = {
         let label = UILabel()
-        
+        label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    //Set func
+    //MARK: Set func
     func set(viewModel: VKFeedCellViewModel) {
-//        self.iconImageView.set(imageURL: viewModel.iconUrl)
-//        self.nameLabel.text = viewModel.name
-//        self.dateLabel.text = viewModel.date
-//        self.sharesLabel.text = viewModel.shares
-//        self.likesLabel.text = viewModel.likes
-//        self.commentsLabel.text = viewModel.comments
-//        self.viewsLabel.text = viewModel.views
-//        self.postsLabel.text = viewModel.post
+        self.iconImage.set(imageURL: viewModel.iconUrl)
+        self.nameLabel.text = viewModel.name
+        self.dateLabel.text = viewModel.date
+        self.repostLabel.text = viewModel.shares
+        self.likesLabel.text = viewModel.likes
+        self.commentsLabel.text = viewModel.comments
+        self.viewsLabel.text = viewModel.views
+        self.postsLabel.text = viewModel.post
         
         postsLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.AttachmentFrame
         bottomView.frame = viewModel.sizes.bottonViewFrame
-
+        
         if let photoAttachment = viewModel.photoAttachment{
             postImageView.isHidden = false
-            //postImageView.set(imageURL: photoAttachment.photoUrlString)
+            postImageView.set(imageURL: photoAttachment.photoUrlString)
         } else {
             postImageView.isHidden = true
         }
@@ -150,12 +155,18 @@ final class NewsFeedCodeCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = #colorLiteral(red: 0.9369474649, green: 0.3679848909, blue: 0.426604867, alpha: 1)
+        
+        iconImage.layer.cornerRadius = Constants.topViewHeight / 2
+        iconImage.clipsToBounds = true
         
         overlayFirstLayer()
         overlaySecondLayer()
         overlayThirdLayer()
+    }
     
+    override func prepareForReuse() {
+        iconImage.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
     }
     
     // overlay card view
@@ -174,7 +185,7 @@ final class NewsFeedCodeCell: UITableViewCell {
                        trailing: cardView.trailingAnchor,
                        padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8),
                        size: CGSize(width: 0, height: Constants.topViewHeight))
-
+        
         cardView.addSubview(postsLabel)
         cardView.addSubview(postImageView)
         cardView.addSubview(bottomView)
@@ -203,8 +214,49 @@ final class NewsFeedCodeCell: UITableViewCell {
         dateLabel.heightAnchor.constraint(equalTo: topView.heightAnchor, multiplier: 0.3).isActive = true
         
         //to bottom view
+        bottomView.addSubview(likesImage)
+        bottomView.addSubview(likesLabel)
+        bottomView.addSubview(commentsImage)
+        bottomView.addSubview(commentsLabel)
+        bottomView.addSubview(repostImage)
+        bottomView.addSubview(repostLabel)
+        bottomView.addSubview(viewsImage)
+        bottomView.addSubview(viewsLabel)
         
-
+        likesImage.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        likesImage.heightAnchor.constraint(equalToConstant: likesImage.image?.size.height ?? 0).isActive = true
+        likesImage.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 16).isActive = true
+        
+        likesLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        likesLabel.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        likesLabel.leadingAnchor.constraint(equalTo: likesImage.trailingAnchor, constant: 4).isActive = true
+        
+        commentsImage.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        commentsImage.heightAnchor.constraint(equalToConstant: likesImage.image?.size.height ?? 0).isActive = true
+        commentsImage.leadingAnchor.constraint(equalTo: likesLabel.trailingAnchor, constant: 16).isActive = true
+        
+        commentsLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        commentsLabel.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        commentsLabel.leadingAnchor.constraint(equalTo: commentsImage.trailingAnchor, constant: 4).isActive = true
+        
+        repostImage.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        repostImage.heightAnchor.constraint(equalToConstant: likesImage.image?.size.height ?? 0).isActive = true
+        repostImage.leadingAnchor.constraint(equalTo: commentsLabel.trailingAnchor, constant: 16).isActive = true
+        
+        repostLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        repostLabel.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        repostLabel.leadingAnchor.constraint(equalTo: repostImage.trailingAnchor, constant: 4).isActive = true
+        
+        viewsLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        viewsLabel.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        viewsLabel.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -16).isActive = true
+        
+        
+        viewsImage.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        viewsImage.heightAnchor.constraint(equalToConstant: likesImage.image?.size.height ?? 0).isActive = true
+        viewsImage.trailingAnchor.constraint(equalTo: viewsLabel.leadingAnchor, constant: -4).isActive = true
+        
+        
     }
     
     
