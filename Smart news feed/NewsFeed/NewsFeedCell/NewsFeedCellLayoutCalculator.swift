@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FeedCellLayoutCaculatorProtocol {
-    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes
+    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?, isFullSizePost: Bool) -> FeedCellSizes
 }
 
 struct Constants {
@@ -27,7 +27,6 @@ struct Constants {
 struct Sizes: FeedCellSizes {
     var bottonViewFrame: CGRect
     var postLabelFrame: CGRect
-    var maxPostLabelFrame: CGRect
     var AttachmentFrame: CGRect
     var showFullTextButtonFrame: CGRect
     var totalHeight: CGFloat
@@ -41,7 +40,7 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         self.screenWidth = screenWidth
     }
     
-    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?) -> FeedCellSizes {
+    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?, isFullSizePost: Bool) -> FeedCellSizes {
         
         var showButton: Bool = false
         
@@ -50,15 +49,12 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         
         //MARK: Работа с пост лейбл фрейм
         var postLabelFrame = CGRect(origin: CGPoint(x: Constants.postLabelInsets.left, y: Constants.postLabelInsets.top), size: CGSize.zero)
-        var maxPostLabelFrame = CGRect(origin: CGPoint(x: Constants.postLabelInsets.left, y: Constants.postLabelInsets.top), size: CGSize.zero)
+    
         if let text = postText, !text.isEmpty {
             var height = text.height(width: width, font: Constants.postLabelFont)
-            maxPostLabelFrame.size = CGSize(width: width, height: height)
-            if height > Constants.maxHeight {
+            if !isFullSizePost && height > Constants.maxHeight {
                 height = Constants.showingHeight
                 showButton = true
-            } else {
-                showButton = false
             }
             postLabelFrame.size = CGSize(width: width, height: height)
         }
@@ -88,7 +84,6 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         
         return  Sizes(bottonViewFrame: bottomViewFrame,
                       postLabelFrame: postLabelFrame,
-                      maxPostLabelFrame: maxPostLabelFrame,
                       AttachmentFrame: attachmentFrame,
                       showFullTextButtonFrame: showFullTextButtonFrame,
                       totalHeight:  totalHeight)

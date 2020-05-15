@@ -18,7 +18,6 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
   var router: (NSObjectProtocol & VKNewsFeedRoutingLogic)?
     private var feedViewModel = FeedViewModel(cells: [])
     
-
     @IBOutlet var table: UITableView!
     
   // MARK: Setup
@@ -38,7 +37,6 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
   // MARK: Routing
   
 
-  
   // MARK: View lifecycle
   
   override func viewDidLoad() {
@@ -64,7 +62,9 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
 extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, ShowFullTextButtonDelegate {
     
     func revealText(cell: NewsFeedCodeCell) {
-        print("UIController")
+        guard let indexPath = table.indexPath(for: cell) else { return }
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        interactor?.makeRequest(request: .revealCellFromPostId(postId: cellViewModel.postId))
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,4 +88,7 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, 
         feedViewModel.cells[indexPath.row].sizes.totalHeight
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+         feedViewModel.cells[indexPath.row].sizes.totalHeight
+    }
 }

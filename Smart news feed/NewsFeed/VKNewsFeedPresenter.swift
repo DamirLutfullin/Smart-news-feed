@@ -26,24 +26,29 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
     
     func presentData(response: VKNewsFeed.Model.Response.ResponseType) {
         switch response {
-        case .presentNewsFeed(feedResponse: let feedResponse):
+        case .presentNewsFeed(let feedResponse, let revealdedPostsIds):
+            print(revealdedPostsIds)
+            
             let cells = feedResponse.items.map({ feedItem in
-                cellViewModel(from: feedItem, profiles: feedResponse.profiles, groups: feedResponse.groups)
+                cellViewModel(from: feedItem, profiles: feedResponse.profiles, groups: feedResponse.groups, revealdedPostIds: revealdedPostsIds)
             })
             
             let feedViewModel = FeedViewModel.init(cells: cells)
-            
             viewController?.displayData(viewModel: .displayNewsFeed(feedViewModel: feedViewModel))
         }
     }
     
-    private func cellViewModel(from feedItem: VKFeedItem, profiles: [Profile], groups: [Group]) -> FeedViewModel.Cell {
+    private func cellViewModel(from feedItem: VKFeedItem, profiles: [Profile], groups: [Group], revealdedPostIds: [Int]) -> FeedViewModel.Cell {
         let profile = self.profile(from: feedItem.sourceId, profiles: profiles, groups: groups)
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormater.string(from: date)
+        let isfullSizePost = revealdedPostIds.contains { (postId) -> Bool in
+            return postId == feedItem.postId
+        }
         let photoAttachments = self.photoAttachment(feedItem: feedItem)
-        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachments)
-        return FeedViewModel.Cell.init(iconUrl: profile.photo,
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachments, isFullSizePost: isfullSizePost)
+        return FeedViewModel.Cell.init(postId: feedItem.postId,
+                                       iconUrl: profile.photo,
                                        name: profile.name,
                                        date: dateTitle,
                                        likes: feedItem.likes?.count.description ?? "0",

@@ -17,6 +17,8 @@ class VKNewsFeedInteractor: VKNewsFeedBusinessLogic {
     var presenter: VKNewsFeedPresentationLogic?
     var service: VKNewsFeedService?
     private var fetcher =  NetworkDataFetcher(networking:NetworkService())
+    private var revealdedPostsIds = [Int]()
+    private var feedResponse: FeedResponse?
     
     func makeRequest(request: VKNewsFeed.Model.Request.RequestType) {
         if service == nil {
@@ -25,10 +27,18 @@ class VKNewsFeedInteractor: VKNewsFeedBusinessLogic {
         switch request {
         case .getNewsFeed:
             fetcher.getFeed { [weak self] (response) in
-                guard let response = response else { return }
-                self?.presenter?.presentData(response: .presentNewsFeed(feedResponse: response))
+                self?.feedResponse = response
+                self?.presentFeed()
             }
+        case .revealCellFromPostId(postId: let postId):
+            revealdedPostsIds.append(postId)
+            presentFeed()
         }
+    }
+    
+    private func presentFeed() {
+        guard let response = self.feedResponse else { return }
+        presenter?.presentData(response: .presentNewsFeed(feedResponse: response, revealdedPostIds: revealdedPostsIds))
     }
     
 }
