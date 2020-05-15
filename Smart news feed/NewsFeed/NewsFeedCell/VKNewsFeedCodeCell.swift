@@ -18,6 +18,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     
     weak var showFullTextDelegate: ShowFullTextButtonDelegate? = nil
     
+    
     //MARK: first layer
     let cardView: UIView = {
         let view = UIView()
@@ -27,12 +28,14 @@ final class NewsFeedCodeCell: UITableViewCell {
         return view
     }()
     
+    
     // MARK: second layer
     let topView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false // чтобы разрешить компилятору закреплять данный вью на экране
         return view
     }()
+    
     let postsLabel: UILabel = {
         let label = UILabel()
         // label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +44,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.textColor = #colorLiteral(red: 0.2366705537, green: 0.2514012158, blue: 0.2652153969, alpha: 1)
         return label
     }()
+    
     let showFullTextButton: UIButton = {
         let button = UIButton()
         button.setTitle("показать полностью...", for: .normal)
@@ -49,17 +53,20 @@ final class NewsFeedCodeCell: UITableViewCell {
         button.titleLabel?.textAlignment = .left
         return button
     }()
+    
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         //    imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9098039216, alpha: 1)
         return imageView
     }()
+    
     let bottomView: UIView = {
         let view = UIView()
         //   view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     
     //MARK: third layer
     // to topView
@@ -68,6 +75,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -76,6 +84,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.numberOfLines = 0
         return label
     }()
+
     let dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -92,18 +101,21 @@ final class NewsFeedCodeCell: UITableViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    
     let commentsImage: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "comment")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    
     let repostImage: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "share")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
+    
     let viewsImage: UIImageView = {
         let image = UIImageView()
         image.image = #imageLiteral(resourceName: "eye")
@@ -119,6 +131,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     let commentsLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
@@ -127,6 +140,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     let repostLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
@@ -135,6 +149,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     let viewsLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
@@ -144,6 +159,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         label.textAlignment = .right
         return label
     }()
+    
     
     //MARK: Set func
     func set(viewModel: VKFeedCellViewModel) {
@@ -174,6 +190,7 @@ final class NewsFeedCodeCell: UITableViewCell {
             postImageView.isHidden = true
         }
     }
+    
     
     //MARK: Init()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -206,6 +223,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.fillSuperview(padding: Constants.cardInsets)
     }
     
+    
     //MARK: overlay second view
     private func overlaySecondLayer() {
         // top view constreints
@@ -222,6 +240,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.addSubview(showFullTextButton)
         cardView.addSubview(bottomView)
     }
+    
     
     //MARK: overlay third view
     private func overlayThirdLayer() {
