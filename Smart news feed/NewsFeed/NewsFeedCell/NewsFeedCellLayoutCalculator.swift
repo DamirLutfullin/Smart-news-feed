@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FeedCellLayoutCaculatorProtocol {
-    func sizes(postText: String?, photoAttachments: [FeedCellPhotoAttachmentViewModel], isFullSizePost: Bool) -> FeedCellSizes
+    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?, isFullSizePost: Bool) -> FeedCellSizes
 }
 
 struct Constants {
@@ -40,7 +40,7 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         self.screenWidth = screenWidth
     }
     
-    func sizes(postText: String?, photoAttachments: [FeedCellPhotoAttachmentViewModel], isFullSizePost: Bool) -> FeedCellSizes {
+    func sizes(postText: String?, photoAttachment: FeedCellPhotoAttachmentViewModel?, isFullSizePost: Bool) -> FeedCellSizes {
         
         var showButton: Bool = false
         
@@ -71,18 +71,9 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         let attachmentTop = postLabelFrame.size == .zero ? Constants.postLabelInsets.top : max(postLabelFrame.maxY, showFullTextButtonFrame.maxY) + Constants.postLabelInsets.bottom
         var attachmentFrame = CGRect(origin: CGPoint(x: 0, y: attachmentTop), size: .zero)
         
-//        if let photo = photoAttachment {
-//            attachmentFrame.size = CGSize(width: cardViewWidth, height: CGFloat(photo.height) / (CGFloat(photo.width) / CGFloat(cardViewWidth)))
-//        }
-            
-        if let photo = photoAttachments.first {
-            if photoAttachments.count == 1 {
+        if let photo = photoAttachment {
             attachmentFrame.size = CGSize(width: cardViewWidth, height: CGFloat(photo.height) / (CGFloat(photo.width) / CGFloat(cardViewWidth)))
-            } else if photoAttachments.count > 1 {
-                attachmentFrame.size = CGSize(width: cardViewWidth, height: CGFloat(photo.height) / (CGFloat(photo.width) / CGFloat(cardViewWidth)))
-            }
         }
-        
         
         //MARK: ставим бот вью на место
         let bottomOriginY: CGFloat = max(attachmentFrame.maxY, postLabelFrame.maxY, showFullTextButtonFrame.maxY)
