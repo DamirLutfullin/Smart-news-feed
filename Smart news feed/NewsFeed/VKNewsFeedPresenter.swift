@@ -45,9 +45,11 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
         let isfullSizePost = revealdedPostIds.contains { (postId) -> Bool in
             return postId == feedItem.postId
         }
-        let photoAttachments = self.photoAttachment(feedItem: feedItem)
-        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachments, isFullSizePost: isfullSizePost)
-        return FeedViewModel.Cell.init(postId: feedItem.postId,
+        let photoAttachments = self.photoAttachments(feedItem: feedItem)
+        let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachments: photoAttachments, isFullSizePost: isfullSizePost)
+        
+        return FeedViewModel.Cell.init(photoAttachments: photoAttachments,
+                                       postId: feedItem.postId,
                                        iconUrl: profile.photo,
                                        name: profile.name,
                                        date: dateTitle,
@@ -56,7 +58,6 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
                                        shares: feedItem.reposts?.count.description ?? "0",
                                        comments: feedItem.comments?.count.description ?? "0",
                                        post: feedItem.text,
-                                       photoAttachment: photoAttachment(feedItem: feedItem),
                                        sizes: sizes)
     }
     
@@ -75,6 +76,14 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
             attachment.photo
         }), let firstPhoto = photos.first else { return nil }
         return FeedViewModel.FeedCellPhotoAttachment.init(photoUrlString: firstPhoto.srcBig, width: firstPhoto.width, height: firstPhoto.height)
+    }
+    
+    private func photoAttachments(feedItem: VKFeedItem) -> [FeedViewModel.FeedCellPhotoAttachment] {
+        guard let photos = feedItem.attachments else { return [] }
+        return photos.compactMap( { (attachments) -> FeedViewModel.FeedCellPhotoAttachment? in
+            guard let photo  = attachments.photo else { return nil}
+            return FeedViewModel.FeedCellPhotoAttachment.init(photoUrlString: photo.srcBig, width: photo.width, height: photo.height)
+        })
     }
     
 }

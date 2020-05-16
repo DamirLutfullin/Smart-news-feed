@@ -61,6 +61,8 @@ final class NewsFeedCodeCell: UITableViewCell {
         return imageView
     }()
     
+    let galleryCollectionView =  GalleryCollectionView()
+    
     let bottomView: UIView = {
         let view = UIView()
         //   view.translatesAutoresizingMaskIntoConstraints = false
@@ -179,15 +181,22 @@ final class NewsFeedCodeCell: UITableViewCell {
         self.postsLabel.text = viewModel.post
         
         postsLabel.frame = viewModel.sizes.postLabelFrame
-        postImageView.frame = viewModel.sizes.AttachmentFrame
         bottomView.frame = viewModel.sizes.bottonViewFrame
         showFullTextButton.frame = viewModel.sizes.showFullTextButtonFrame
         
-        if let photoAttachment = viewModel.photoAttachment{
+        if let photoAttachment = viewModel.photoAttachments.first, viewModel.photoAttachments.count == 1 {
             postImageView.isHidden = false
             postImageView.set(imageURL: photoAttachment.photoUrlString)
+            postImageView.frame = viewModel.sizes.AttachmentFrame
+            galleryCollectionView.isHidden = true
+        } else if viewModel.photoAttachments.count > 1 {
+            galleryCollectionView.frame = viewModel.sizes.AttachmentFrame
+            postImageView.isHidden = true
+            galleryCollectionView.isHidden = false
+            galleryCollectionView.set(photos: viewModel.photoAttachments)
         } else {
             postImageView.isHidden = true
+            galleryCollectionView.isHidden = true
         }
     }
     
@@ -239,6 +248,7 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.addSubview(postImageView)
         cardView.addSubview(showFullTextButton)
         cardView.addSubview(bottomView)
+        cardView.addSubview(galleryCollectionView)
     }
     
     

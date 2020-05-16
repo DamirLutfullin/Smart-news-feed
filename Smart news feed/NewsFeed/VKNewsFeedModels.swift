@@ -32,6 +32,7 @@ enum VKNewsFeed {
 
 struct FeedViewModel {
     struct Cell: VKFeedCellViewModel {
+        var photoAttachments: [FeedCellPhotoAttachmentViewModel]
         var postId: Int
         var iconUrl: String
         var name: String
@@ -42,7 +43,6 @@ struct FeedViewModel {
         var shares: String?
         var comments: String?
         var post: String?
-        var photoAttachment: FeedCellPhotoAttachmentViewModel?
         var sizes: FeedCellSizes
     }
     
