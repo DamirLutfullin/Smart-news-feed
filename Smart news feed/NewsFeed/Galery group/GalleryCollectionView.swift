@@ -14,9 +14,8 @@ class GalleryCollectionView: UICollectionView {
     var photos = [FeedCellPhotoAttachmentViewModel]()
 
     init() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        super.init(frame: .zero, collectionViewLayout: layout)
+        let rowLayout = RowLayout()
+        super.init(frame: .zero, collectionViewLayout: rowLayout)
         
         delegate = self
         dataSource = self
@@ -37,7 +36,7 @@ class GalleryCollectionView: UICollectionView {
 }
 
 
-extension  GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension  GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         photos.count
@@ -48,7 +47,10 @@ extension  GalleryCollectionView: UICollectionViewDelegate, UICollectionViewData
         if let photoUrl = photos[indexPath.row].photoUrlString {
             cell.setImage(imageUrl: photoUrl)
         }
-        print(photos.count)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.width, height: frame.height)
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1917A995247096590033A733 /* RowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1917A994247096590033A733 /* RowLayout.swift */; };
 		191933472466E29700450C8F /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191933462466E29700450C8F /* String + Height.swift */; };
 		1933A53E2463008A0099DC6C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53D2463008A0099DC6C /* NetworkService.swift */; };
 		1933A5402463063B0099DC6C /* VKAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53F2463063B0099DC6C /* VKAPI.swift */; };
@@ -149,6 +150,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1917A994247096590033A733 /* RowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowLayout.swift; sourceTree = "<group>"; };
 		191933462466E29700450C8F /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		1933A53D2463008A0099DC6C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1933A53F2463063B0099DC6C /* VKAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAPI.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 			children = (
 				1980BABF246EEB5300FB0D53 /* GalleryCollectionViewCell.swift */,
 				1980BABD246EE6DC00FB0D53 /* GalleryCollectionView.swift */,
+				1917A994247096590033A733 /* RowLayout.swift */,
 			);
 			path = "Galery group";
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1917A995247096590033A733 /* RowLayout.swift in Sources */,
 				1980BAC0246EEB5300FB0D53 /* GalleryCollectionViewCell.swift in Sources */,
 				19DB6F5924675693005D0806 /* Constreints.swift in Sources */,
 				19645678246465A100C98E5B /* VKNewsFeedPresenter.swift in Sources */,
