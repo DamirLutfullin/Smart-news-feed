@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1917A995247096590033A733 /* RowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1917A994247096590033A733 /* RowLayout.swift */; };
 		191933472466E29700450C8F /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191933462466E29700450C8F /* String + Height.swift */; };
 		1933A53E2463008A0099DC6C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53D2463008A0099DC6C /* NetworkService.swift */; };
 		1933A5402463063B0099DC6C /* VKAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53F2463063B0099DC6C /* VKAPI.swift */; };
@@ -120,8 +119,6 @@
 		19708F2E2463DBFD00861C1F /* VKFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */; };
 		197A0A8F2462961E00B01EF0 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; };
 		197A0A902462961E00B01EF0 /* VKSdkFramework.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1980BABE246EE6DC00FB0D53 /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980BABD246EE6DC00FB0D53 /* GalleryCollectionView.swift */; };
-		1980BAC0246EEB5300FB0D53 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1980BABF246EEB5300FB0D53 /* GalleryCollectionViewCell.swift */; };
 		199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */; };
 		199EAE12246563DC00E0EEAC /* VKNewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */; };
 		199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE142465E14000E0EEAC /* WebImageView.swift */; };
@@ -150,7 +147,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1917A994247096590033A733 /* RowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowLayout.swift; sourceTree = "<group>"; };
 		191933462466E29700450C8F /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		1933A53D2463008A0099DC6C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1933A53F2463063B0099DC6C /* VKAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAPI.swift; sourceTree = "<group>"; };
@@ -262,8 +258,6 @@
 		1964567F24655A6200C98E5B /* VKNewsFeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VKNewsFeedViewController.storyboard; sourceTree = "<group>"; };
 		19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFeedResponse.swift; sourceTree = "<group>"; };
 		197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
-		1980BABD246EE6DC00FB0D53 /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
-		1980BABF246EEB5300FB0D53 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsFeedCell.swift; sourceTree = "<group>"; };
 		199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKNewsFeedCell.xib; sourceTree = "<group>"; };
 		199EAE142465E14000E0EEAC /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
@@ -459,9 +453,6 @@
 		1980BABC246EE69600FB0D53 /* Galery group */ = {
 			isa = PBXGroup;
 			children = (
-				1980BABF246EEB5300FB0D53 /* GalleryCollectionViewCell.swift */,
-				1980BABD246EE6DC00FB0D53 /* GalleryCollectionView.swift */,
-				1917A994247096590033A733 /* RowLayout.swift */,
 			);
 			path = "Galery group";
 			sourceTree = "<group>";
@@ -720,8 +711,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1917A995247096590033A733 /* RowLayout.swift in Sources */,
-				1980BAC0246EEB5300FB0D53 /* GalleryCollectionViewCell.swift in Sources */,
 				19DB6F5924675693005D0806 /* Constreints.swift in Sources */,
 				19645678246465A100C98E5B /* VKNewsFeedPresenter.swift in Sources */,
 				199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */,
@@ -741,7 +730,6 @@
 				1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */,
 				1933A5402463063B0099DC6C /* VKAPI.swift in Sources */,
 				1964566F24640A1E00C98E5B /* NetworkDataFetcher.swift in Sources */,
-				1980BABE246EE6DC00FB0D53 /* GalleryCollectionView.swift in Sources */,
 				19B7D1E7245A9A9A00824A24 /* SceneDelegate.swift in Sources */,
 				1949D4DE24629E8800DB776D /* AuthService.swift in Sources */,
 			);
