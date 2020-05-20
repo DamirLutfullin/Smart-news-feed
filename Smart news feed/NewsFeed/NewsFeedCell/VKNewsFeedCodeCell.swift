@@ -193,7 +193,7 @@ final class NewsFeedCodeCell: UITableViewCell {
             galleryCollectionView.frame = viewModel.sizes.AttachmentFrame
             postImageView.isHidden = true
             galleryCollectionView.isHidden = false
-            galleryCollectionView.set(photos: viewModel.photoAttachments)
+            galleryCollectionView.set(photoAttachments: viewModel.photoAttachments)
         } else {
             postImageView.isHidden = true
             galleryCollectionView.isHidden = true

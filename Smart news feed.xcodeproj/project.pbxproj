@@ -10,6 +10,9 @@
 		191933472466E29700450C8F /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191933462466E29700450C8F /* String + Height.swift */; };
 		1933A53E2463008A0099DC6C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53D2463008A0099DC6C /* NetworkService.swift */; };
 		1933A5402463063B0099DC6C /* VKAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1933A53F2463063B0099DC6C /* VKAPI.swift */; };
+		193931E02475C07F0010C5A9 /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193931DF2475C07F0010C5A9 /* GalleryCollectionView.swift */; };
+		193931E22475C0EA0010C5A9 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193931E12475C0EA0010C5A9 /* GalleryCollectionViewCell.swift */; };
+		193931E42475C1040010C5A9 /* ItemLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193931E32475C1040010C5A9 /* ItemLayout.swift */; };
 		1949D4DB246296FE00DB776D /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1949D4DA246296FE00DB776D /* AuthViewController.storyboard */; };
 		1949D4DE24629E8800DB776D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1949D4DD24629E8800DB776D /* AuthService.swift */; };
 		1949D53E2462A2AF00DB776D /* SF-Compact-Text-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1949D4E02462A2A000DB776D /* SF-Compact-Text-BlackItalic.otf */; };
@@ -150,6 +153,9 @@
 		191933462466E29700450C8F /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		1933A53D2463008A0099DC6C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1933A53F2463063B0099DC6C /* VKAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAPI.swift; sourceTree = "<group>"; };
+		193931DF2475C07F0010C5A9 /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
+		193931E12475C0EA0010C5A9 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		193931E32475C1040010C5A9 /* ItemLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemLayout.swift; sourceTree = "<group>"; };
 		1949D4DA246296FE00DB776D /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
 		1949D4DD24629E8800DB776D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1949D4E02462A2A000DB776D /* SF-Compact-Text-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-BlackItalic.otf"; sourceTree = "<group>"; };
@@ -453,6 +459,9 @@
 		1980BABC246EE69600FB0D53 /* Galery group */ = {
 			isa = PBXGroup;
 			children = (
+				193931E32475C1040010C5A9 /* ItemLayout.swift */,
+				193931DF2475C07F0010C5A9 /* GalleryCollectionView.swift */,
+				193931E12475C0EA0010C5A9 /* GalleryCollectionViewCell.swift */,
 			);
 			path = "Galery group";
 			sourceTree = "<group>";
@@ -711,10 +720,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				193931E42475C1040010C5A9 /* ItemLayout.swift in Sources */,
 				19DB6F5924675693005D0806 /* Constreints.swift in Sources */,
 				19645678246465A100C98E5B /* VKNewsFeedPresenter.swift in Sources */,
 				199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */,
 				199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */,
+				193931E22475C0EA0010C5A9 /* GalleryCollectionViewCell.swift in Sources */,
 				1933A53E2463008A0099DC6C /* NetworkService.swift in Sources */,
 				199EAE172466C9C800E0EEAC /* NewsFeedCellLayoutCalculator.swift in Sources */,
 				19B7D1E9245A9A9A00824A24 /* AuthViewController.swift in Sources */,
@@ -730,6 +741,7 @@
 				1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */,
 				1933A5402463063B0099DC6C /* VKAPI.swift in Sources */,
 				1964566F24640A1E00C98E5B /* NetworkDataFetcher.swift in Sources */,
+				193931E02475C07F0010C5A9 /* GalleryCollectionView.swift in Sources */,
 				19B7D1E7245A9A9A00824A24 /* SceneDelegate.swift in Sources */,
 				1949D4DE24629E8800DB776D /* AuthService.swift in Sources */,
 			);
