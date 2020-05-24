@@ -19,7 +19,10 @@ class ItemLayout: UICollectionViewLayout {
     weak var delegate: GalleryCollectionViewCustomLayoutDelegate?
     
     var contentWidth: CGFloat = 0
-    var contentHeight: CGFloat = 0
+    var contentHeight: CGFloat {
+        guard let collectionView = collectionView else { return 0 }
+        return collectionView.bounds.height
+    }
     
     var photoAttributes = [UICollectionViewLayoutAttributes]()
     
@@ -47,17 +50,26 @@ class ItemLayout: UICollectionViewLayout {
             photosSizes.append(sizeOfPhoto)
         }
         
-       minRotationPhotoSize = photosSizes.min { (first, second) -> Bool in
-            (first.height / first.width ) < (second.height / second.width)
-        } ?? CGSize.zero
+        let photoWithMinRatio = photosSizes.min { (first, second) -> Bool in
+            (first.height / first.width) < (second.height / second.width)
+        }
         
-        let proportion = UIScreen.main.bounds.width / minRotationPhotoSize.width
-        contentHeight = minRotationPhotoSize.height * proportion
+        guard photoWithMinRatio != nil else { return }
         
-        for (index, photoSize) in photosSizes.enumerated() {
-            contentWidth += photoSize.width
+        let photosRatios = photosSizes.map { $0.height / $0.width }
+        
+        for (index, _) in photosSizes.enumerated() {
+            let ratio = photosRatios[index]
+            let width = (contentHeight / ratio)
+            contentWidth += width
             let attribute = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: index, section: 0))
-            attribute.frame = CGRect(x: contentWidth - photoSize.width, y: 0, width: photoSize.width, height: contentHeight)
+            attribute.frame = CGRect(x: contentWidth - width, y: 0, width: width, height: contentHeight)
+            photoAttributes.append(attribute)
+        }
+        
+        print(collectionViewContentSize)
+        for item in photoAttributes {
+            print(item.frame)
         }
         
     }

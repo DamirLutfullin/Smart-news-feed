@@ -19,6 +19,9 @@ class GalleryCollectionView: UICollectionView {
         delegate = self
         dataSource = self
         layout.delegate = self
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        bounces = false
         register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.description())
     }
     
