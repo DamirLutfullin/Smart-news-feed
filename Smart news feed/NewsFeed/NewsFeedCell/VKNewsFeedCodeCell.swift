@@ -185,16 +185,19 @@ final class NewsFeedCodeCell: UITableViewCell {
         showFullTextButton.frame = viewModel.sizes.showFullTextButtonFrame
         
         if let photoAttachment = viewModel.photoAttachments.first, viewModel.photoAttachments.count == 1 {
+            print("viewModel.photoAttachments.count == 1")
             postImageView.isHidden = false
             postImageView.frame = viewModel.sizes.AttachmentFrame
             galleryCollectionView.isHidden = true
             postImageView.set(imageURL: photoAttachment.photoUrlString)
         } else if viewModel.photoAttachments.count > 1 {
+            print("viewModel.photoAttachments.count > 1")
             galleryCollectionView.frame = viewModel.sizes.AttachmentFrame
             postImageView.isHidden = true
             galleryCollectionView.isHidden = false
             galleryCollectionView.set(photoAttachments: viewModel.photoAttachments)
         } else {
+            print("else")
             postImageView.isHidden = true
             galleryCollectionView.isHidden = true
         }

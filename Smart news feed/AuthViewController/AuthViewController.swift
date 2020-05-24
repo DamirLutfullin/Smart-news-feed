@@ -16,10 +16,9 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         authService = SceneDelegate.shared.authService
-        singInTouch()
     }
 
-    @IBAction func singInTouch() {
+    @IBAction func singInTouch(_ sender: UIButton) {
         authService.wakeUpSession()
     }
 }

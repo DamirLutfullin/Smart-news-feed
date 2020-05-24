@@ -459,9 +459,9 @@
 		1980BABC246EE69600FB0D53 /* Galery group */ = {
 			isa = PBXGroup;
 			children = (
+				193931E12475C0EA0010C5A9 /* GalleryCollectionViewCell.swift */,
 				193931E32475C1040010C5A9 /* ItemLayout.swift */,
 				193931DF2475C07F0010C5A9 /* GalleryCollectionView.swift */,
-				193931E12475C0EA0010C5A9 /* GalleryCollectionViewCell.swift */,
 			);
 			path = "Galery group";
 			sourceTree = "<group>";

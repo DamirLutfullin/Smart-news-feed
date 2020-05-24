@@ -46,6 +46,7 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
             return postId == feedItem.postId
         }
         let photoAttachments = self.photoAttachments(feedItem: feedItem)
+        print(photoAttachments.count)
         let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachments: photoAttachments, isFullSizePost: isfullSizePost)
         
         return FeedViewModel.Cell.init(photoAttachments: photoAttachments,
@@ -71,19 +72,14 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
         return profileRepresentable!
     }
     
-    private func photoAttachment(feedItem: VKFeedItem) -> FeedViewModel.FeedCellPhotoAttachment? {
-        guard let photos = feedItem.attachments?.compactMap({ attachment in
-            attachment.photo
-        }), let firstPhoto = photos.first else { return nil }
-        return FeedViewModel.FeedCellPhotoAttachment.init(photoUrlString: firstPhoto.srcBig, width: firstPhoto.width, height: firstPhoto.height)
-    }
-    
+   
     private func photoAttachments(feedItem: VKFeedItem) -> [FeedViewModel.FeedCellPhotoAttachment] {
         guard let photos = feedItem.attachments else { return [] }
         return photos.compactMap( { (attachments) -> FeedViewModel.FeedCellPhotoAttachment? in
             guard let photo  = attachments.photo else { return nil}
             return FeedViewModel.FeedCellPhotoAttachment.init(photoUrlString: photo.srcBig, width: photo.width, height: photo.height)
         })
+        
     }
     
 }
