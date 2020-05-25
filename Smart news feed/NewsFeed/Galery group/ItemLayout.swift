@@ -16,81 +16,111 @@ protocol GalleryCollectionViewCustomLayoutDelegate: class {
 // тут нам нужно вернуть макет для элементов
 class ItemLayout: UICollectionViewLayout {
     
-    weak var delegate: GalleryCollectionViewCustomLayoutDelegate?
+    weak var delegate: GalleryCollectionViewCustomLayoutDelegate!
     
-    var contentWidth: CGFloat = 0
-    var contentHeight: CGFloat {
+    static var numbersOfRows = 1
+    fileprivate var cellPadding: CGFloat = 8
+    
+    fileprivate var cache = [UICollectionViewLayoutAttributes]()
+    
+    fileprivate var contentWidth: CGFloat = 0
+    
+    // константа
+    fileprivate var contentHeight: CGFloat {
+        
         guard let collectionView = collectionView else { return 0 }
-        return collectionView.bounds.height
+
+        let insets =  collectionView.contentInset
+        return collectionView.bounds.height - (insets.left + insets.right)
     }
     
-    var photoAttributes = [UICollectionViewLayoutAttributes]()
-    
-    //возвращает размер всего нашего вью
     override var collectionViewContentSize: CGSize {
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
-    // тут все вычисляем
-    // по сути надо вычислить аттрибуты и размер всего вью
     override func prepare() {
-        super.prepare()
-        var photosSizes = [CGSize]()
-        var minRotationPhotoSize: CGSize = .zero
-        guard let collectionView = collectionView else {
-            print("cant get collection view in ItemLayout")
-            return
-        }
+        contentWidth = 0
+        cache = []
+        guard cache.isEmpty == true, let collectionView = collectionView else { return }
         
+        var photos = [CGSize]()
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
-            guard let sizeOfPhoto = delegate?.collectionView(collectionView, atIndexPath: indexPath) else {
-                print("cant get photoSize in ItemLayout")
-                return }
-            photosSizes.append(sizeOfPhoto)
+            let photoSize = delegate.collectionView(collectionView, atIndexPath: indexPath)
+            photos.append(photoSize)
         }
         
-        let photoWithMinRatio = photosSizes.min { (first, second) -> Bool in
+        if photos.count > 4 {
+            ItemLayout.numbersOfRows = 2
+        } else {
+            ItemLayout.numbersOfRows = 1
+        }
+        
+        let superviewWidth = collectionView.frame.width
+        
+        guard var rowHeight = ItemLayout.rowHeightCounter(superviewWidth: superviewWidth, photosArray: photos) else { return }
+        
+        rowHeight = rowHeight / CGFloat(ItemLayout.numbersOfRows)
+        
+        let photosRatios = photos.map { $0.height / $0.width }
+        
+        var yOffset = [CGFloat]()
+        for row in 0 ..< ItemLayout.numbersOfRows {
+            yOffset.append(CGFloat(row) * rowHeight)
+        }
+        
+        var xOffset = [CGFloat](repeating: 0, count: ItemLayout.numbersOfRows)
+        
+        var row = 0
+        for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: item, section: 0)
+            
+            let ratio = photosRatios[indexPath.row]
+            let width = (rowHeight / ratio)
+            let frame = CGRect(x: xOffset[row], y: yOffset[row], width: width, height: rowHeight)
+            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+            
+            let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            attribute.frame = insetFrame
+            cache.append(attribute)
+            
+            contentWidth = max(contentWidth, frame.maxX)
+            xOffset[row] = xOffset[row] + width
+            row = row < (ItemLayout.numbersOfRows - 1) ? (row + 1) : 0
+        }
+        
+    }
+    
+    static func rowHeightCounter(superviewWidth: CGFloat, photosArray: [CGSize]) -> CGFloat? {
+        var rowHeight: CGFloat
+        
+        let photoWithMinRatio = photosArray.min { (first, second) -> Bool in
             (first.height / first.width) < (second.height / second.width)
         }
         
-        guard photoWithMinRatio != nil else { return }
+        guard let myPhotoWithMinRatio = photoWithMinRatio else { return nil }
         
-        let photosRatios = photosSizes.map { $0.height / $0.width }
+        let difference = superviewWidth / myPhotoWithMinRatio.width
         
-        for (index, _) in photosSizes.enumerated() {
-            let ratio = photosRatios[index]
-            let width = (contentHeight / ratio)
-            contentWidth += width
-            let attribute = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: index, section: 0))
-            attribute.frame = CGRect(x: contentWidth - width, y: 0, width: width, height: contentHeight)
-            photoAttributes.append(attribute)
-        }
+        rowHeight = myPhotoWithMinRatio.height * difference
         
-        print(collectionViewContentSize)
-        for item in photoAttributes {
-            print(item.frame)
-        }
-        
+        rowHeight = rowHeight * CGFloat(ItemLayout.numbersOfRows)
+        return rowHeight
     }
     
-    
-    // возвращает аттрибуты элементов, которые видно на экрана
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
-        var intersectsAttributes = [UICollectionViewLayoutAttributes]()
-        for attributes in photoAttributes {
-            if attributes.frame.intersects(rect) {
-                intersectsAttributes.append(attributes)
+        var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
+        
+        for attatibute in cache {
+            if attatibute.frame.intersects(rect) {
+                visibleLayoutAttributes.append(attatibute)
             }
         }
-        return intersectsAttributes
-        
+        return visibleLayoutAttributes
     }
     
-    // возвращает аттрибуты отдельного элемента
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return photoAttributes[indexPath.item]
+        return cache[indexPath.row]
     }
-
 }

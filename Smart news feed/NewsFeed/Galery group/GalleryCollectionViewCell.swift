@@ -10,33 +10,42 @@ import UIKit
 
 class GalleryCollectionViewCell: UICollectionViewCell {
     
-    let imageView: WebImageView = {
-        let imageView = WebImageView()
-        imageView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+    let myImageView: WebImageView = {
+       let imageView = WebImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = #colorLiteral(red: 0.8882605433, green: 0.8981810212, blue: 0.9109882712, alpha: 1)
         return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(imageView)
-        backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
-        imageView.fillSuperview()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func set(url: String) {
-        self.imageView.set(imageURL: url)
-        print("set image")
+        
+        addSubview(myImageView)
+        // myImageView constraints
+        myImageView.fillSuperview()
     }
     
     override func prepareForReuse() {
-        super.prepareForReuse()
-        imageView.image = nil
+        myImageView.image = nil
+    }
+    
+    func set(imageUrl: String?) {
+        myImageView.set(imageURL: imageUrl)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        myImageView.layer.masksToBounds = true
+        myImageView.layer.cornerRadius = 10
+        self.layer.shadowRadius = 3
+        layer.shadowOpacity = 0.4
+        layer.shadowOffset = CGSize(width: 2.5, height: 4)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

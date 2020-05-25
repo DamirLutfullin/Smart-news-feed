@@ -71,8 +71,26 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         let attachmentTop = postLabelFrame.size == .zero ? Constants.postLabelInsets.top : max(postLabelFrame.maxY, showFullTextButtonFrame.maxY) + Constants.postLabelInsets.bottom
         var attachmentFrame = CGRect(origin: CGPoint(x: 0, y: attachmentTop), size: .zero)
         
-        if let photo = photoAttachments.first {
+        if let photo = photoAttachments.first, photoAttachments.count == 1 {
             attachmentFrame.size = CGSize(width: cardViewWidth, height: CGFloat(photo.height) / (CGFloat(photo.width) / CGFloat(cardViewWidth)))
+        } else if 2...4 ~= photoAttachments.count  {
+            print("kek")
+            var photos = [CGSize]()
+            for photoSize in photoAttachments {
+                photos.append(CGSize(width: CGFloat(photoSize.width), height: CGFloat(photoSize.height)))
+            }
+            ItemLayout.numbersOfRows = 1
+            let rowHeight = ItemLayout.rowHeightCounter(superviewWidth: cardViewWidth, photosArray: photos)
+            attachmentFrame.size = CGSize(width: cardViewWidth, height: rowHeight!)
+        } else if 5...10 ~= photoAttachments.count  {
+            print("kek")
+            var photos = [CGSize]()
+            for photoSize in photoAttachments {
+                photos.append(CGSize(width: CGFloat(photoSize.width), height: CGFloat(photoSize.height)))
+            }
+            ItemLayout.numbersOfRows = 2
+            let rowHeight = ItemLayout.rowHeightCounter(superviewWidth: cardViewWidth, photosArray: photos)
+            attachmentFrame.size = CGSize(width: cardViewWidth, height: rowHeight!)
         }
         
         //MARK: ставим бот вью на место

@@ -8,58 +8,56 @@
 
 import UIKit
 
-class GalleryCollectionView: UICollectionView {
+class GalleryCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var photoArray = [FeedCellPhotoAttachmentViewModel]()
-
+    var photos = [FeedCellPhotoAttachmentViewModel]()
+    
     init() {
-        let layout = ItemLayout()
-        super.init(frame: .zero, collectionViewLayout: layout)
-        backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        let rowLayout = ItemLayout()
+        super.init(frame: .zero, collectionViewLayout: rowLayout)
+        
         delegate = self
         dataSource = self
-        layout.delegate = self
-        showsVerticalScrollIndicator = false
+        
+        backgroundColor = UIColor.white
+        
         showsHorizontalScrollIndicator = false
-        bounces = false
+        showsVerticalScrollIndicator = false
+        
         register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: GalleryCollectionViewCell.description())
+        
+        if let itemLayout = collectionViewLayout as? ItemLayout {
+            itemLayout.delegate = self
+        }
     }
     
-    func set( photoAttachments: [FeedCellPhotoAttachmentViewModel]) {
-        print("gcv got photo")
-        self.photoArray = photoAttachments
+    func set(photos: [FeedCellPhotoAttachmentViewModel]) {
+        self.photos = photos
+        contentOffset = CGPoint.zero
         reloadData()
-        print(photoArray.count)
     }
     
-    required init?(coder: NSCoder) {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.description(), for: indexPath) as! GalleryCollectionViewCell
+        cell.set(imageUrl: photos[indexPath.row].photoUrlString)
+        return cell
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-extension GalleryCollectionView: UICollectionViewDataSource, UICollectionViewDelegate, GalleryCollectionViewCustomLayoutDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(#function)
-        return photoArray.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cellForItemAt indexPath: IndexPath")
-        let cell = dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.description(), for: indexPath) as! GalleryCollectionViewCell
-        if let photoUrl = photoArray[indexPath.row].photoUrlString {
-            print("gor photo url")
-            cell.set(url: photoUrl) }
-        else {
-            print("cant get photo url")
-        }
-        return cell
-    }
+extension GalleryCollectionView: GalleryCollectionViewCustomLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, atIndexPath indexPath: IndexPath) -> CGSize {
-        print(#function)
-        let photo = photoArray[indexPath.item]
-        return CGSize(width: photo.width, height: photo.height)
+        let width = photos[indexPath.row].width
+        let height = photos[indexPath.row].height
+        return CGSize(width: width, height: height)
     }
-
 }
+
