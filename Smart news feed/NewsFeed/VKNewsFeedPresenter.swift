@@ -27,14 +27,14 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
     func presentData(response: VKNewsFeed.Model.Response.ResponseType) {
         switch response {
         case .presentNewsFeed(let feedResponse, let revealdedPostsIds):
-            print(revealdedPostsIds)
-            
             let cells = feedResponse.items.map({ feedItem in
                 cellViewModel(from: feedItem, profiles: feedResponse.profiles, groups: feedResponse.groups, revealdedPostIds: revealdedPostsIds)
             })
-            
             let feedViewModel = FeedViewModel.init(cells: cells)
             viewController?.displayData(viewModel: .displayNewsFeed(feedViewModel: feedViewModel))
+        case .presentUserPhoto(photoUrl: let photoUrl):
+            print(".presentUserPhoto photo url is " + photoUrl)
+            viewController?.displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData.displayUsersPhoto(photoUrl: photoUrl))
         }
     }
     
@@ -46,7 +46,6 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
             return postId == feedItem.postId
         }
         let photoAttachments = self.photoAttachments(feedItem: feedItem)
-        print(photoAttachments.count)
         let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachments: photoAttachments, isFullSizePost: isfullSizePost)
         
         return FeedViewModel.Cell.init(photoAttachments: photoAttachments,

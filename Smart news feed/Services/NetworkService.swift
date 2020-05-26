@@ -25,7 +25,6 @@ class NetworkService: Networking {
     
     func request(path: String, params: [String : String], completion: @escaping (Data?, Error?) -> ()) {
         guard let token = authService.token else { return }
-        let params = ["filters": "post,photo"]
         var allParams = params
         allParams["access_token"] = token
         allParams["v"] = VKAPI.version
@@ -33,7 +32,6 @@ class NetworkService: Networking {
         print(url.description)
         let task = createDataTask(from: url, completion: completion)
         task.resume()
-
     }
     
     private func createDataTask(from url: URL, completion: @escaping (Data?, Error?) -> ()) -> URLSessionDataTask {

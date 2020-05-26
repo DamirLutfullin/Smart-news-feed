@@ -33,6 +33,13 @@ class VKNewsFeedInteractor: VKNewsFeedBusinessLogic {
         case .revealCellFromPostId(postId: let postId):
             revealdedPostsIds.append(postId)
             presentFeed()
+        case .getUserPhotoUrl:
+            print(".getUserPhotoUrl")
+            fetcher.getUser { [weak self] (respone) in
+                guard let photoUrl = respone?.photo100 else { return }
+                self?.presenter?.presentData(response: VKNewsFeed.Model.Response.ResponseType.presentUserPhoto(photoUrl: photoUrl))
+                print(photoUrl)
+            }
         }
     }
     

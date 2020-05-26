@@ -9,11 +9,11 @@
 import UIKit
 
 protocol VKNewsFeedDisplayLogic: class {
-  func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData)
+    func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData)
 }
 
 class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
-
+    
   var interactor: VKNewsFeedBusinessLogic?
   var router: (NSObjectProtocol & VKNewsFeedRoutingLogic)?
     private var feedViewModel = FeedViewModel(cells: [])
@@ -46,26 +46,30 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     setupTopBars()
     table.register(UINib(nibName: "VKNewsFeedCell", bundle: nil), forCellReuseIdentifier: VKNewsFeedCell.reuseId)
     table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
-    interactor?.makeRequest(request: .getNewsFeed)
     table.separatorStyle = .none
     table.backgroundColor = .clear
     view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
-  }
+    
+    interactor?.makeRequest(request: .getNewsFeed)
+    interactor?.makeRequest(request: .getUserPhotoUrl)
+    }
     
     private func setupTopBars() {
         self.navigationController?.hidesBarsOnSwipe = true // скрываем бар при листании вниз
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.titleView = titleView
-        
     }
-  
-  func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData) {
-    switch viewModel {
-    case .displayNewsFeed(feedViewModel: let feedViewModel):
-        self.feedViewModel = feedViewModel
-        table.reloadData()
+    
+    func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData) {
+        switch viewModel {
+        case .displayNewsFeed(feedViewModel: let feedViewModel):
+            self.feedViewModel = feedViewModel
+            table.reloadData()
+        case .displayUsersPhoto(photoUrl: let photoUrl):
+            print(".displayUsersPhoto")
+            self.titleView.myAvatarView.set(imageURL: photoUrl)
+        }
     }
-  }
 }
 
 extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, ShowFullTextButtonDelegate {

@@ -74,7 +74,6 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
         if let photo = photoAttachments.first, photoAttachments.count == 1 {
             attachmentFrame.size = CGSize(width: cardViewWidth, height: CGFloat(photo.height) / (CGFloat(photo.width) / CGFloat(cardViewWidth)))
         } else if 2...4 ~= photoAttachments.count  {
-            print("kek")
             var photos = [CGSize]()
             for photoSize in photoAttachments {
                 photos.append(CGSize(width: CGFloat(photoSize.width), height: CGFloat(photoSize.height)))
@@ -83,7 +82,6 @@ final class FeedCellLayoutCaculator: FeedCellLayoutCaculatorProtocol {
             let rowHeight = ItemLayout.rowHeightCounter(superviewWidth: cardViewWidth, photosArray: photos)
             attachmentFrame.size = CGSize(width: cardViewWidth, height: rowHeight!)
         } else if 5...10 ~= photoAttachments.count  {
-            print("kek")
             var photos = [CGSize]()
             for photoSize in photoAttachments {
                 photos.append(CGSize(width: CGFloat(photoSize.width), height: CGFloat(photoSize.height)))

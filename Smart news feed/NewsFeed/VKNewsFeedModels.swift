@@ -15,16 +15,19 @@ enum VKNewsFeed {
             enum RequestType {
                 case getNewsFeed
                 case revealCellFromPostId(postId: Int)
+                case getUserPhotoUrl
             }
         }
         struct Response {
             enum ResponseType {
                 case presentNewsFeed (feedResponse: FeedResponse, revealdedPostIds: [Int])
+                case presentUserPhoto (photoUrl: String)
             }
         }
         struct ViewModel {
             enum ViewModelData {
                 case displayNewsFeed(feedViewModel: FeedViewModel)
+                case displayUsersPhoto(photoUrl: String)
             }
         }
     }
