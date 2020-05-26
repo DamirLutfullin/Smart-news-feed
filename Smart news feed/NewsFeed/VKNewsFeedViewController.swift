@@ -18,6 +18,11 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
   var router: (NSObjectProtocol & VKNewsFeedRoutingLogic)?
     private var feedViewModel = FeedViewModel(cells: [])
     private var titleView = TitleView()
+    private var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
     
     @IBOutlet var table: UITableView!
     
@@ -44,10 +49,7 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     super.viewDidLoad()
     setup()
     setupTopBars()
-    table.register(UINib(nibName: "VKNewsFeedCell", bundle: nil), forCellReuseIdentifier: VKNewsFeedCell.reuseId)
-    table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
-    table.separatorStyle = .none
-    table.backgroundColor = .clear
+    setupTableView()
     view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
     
     interactor?.makeRequest(request: .getNewsFeed)
@@ -60,11 +62,24 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
         navigationItem.titleView = titleView
     }
     
+    @objc private func refresh() {
+        interactor?.makeRequest(request: .getNewsFeed)
+    }
+    
+    private func setupTableView() {
+        table.register(UINib(nibName: "VKNewsFeedCell", bundle: nil), forCellReuseIdentifier: VKNewsFeedCell.reuseId)
+        table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
+        table.separatorStyle = .none
+        table.backgroundColor = .clear
+        table.refreshControl = refreshControl
+    }
+    
     func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData) {
         switch viewModel {
         case .displayNewsFeed(feedViewModel: let feedViewModel):
             self.feedViewModel = feedViewModel
             table.reloadData()
+            refreshControl.endRefreshing()
         case .displayUsersPhoto(photoUrl: let photoUrl):
             print(".displayUsersPhoto")
             self.titleView.myAvatarView.set(imageURL: photoUrl)

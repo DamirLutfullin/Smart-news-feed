@@ -36,13 +36,18 @@ final class NewsFeedCodeCell: UITableViewCell {
         return view
     }()
     
-    let postsLabel: UILabel = {
-        let label = UILabel()
-        // label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Constants.postLabelFont
-        label.numberOfLines = 0
-        label.textColor = #colorLiteral(red: 0.2366705537, green: 0.2514012158, blue: 0.2652153969, alpha: 1)
-        return label
+    let repostTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = Constants.postLabelFont
+        textView.isScrollEnabled = false
+        textView.isSelectable = true
+        textView.isUserInteractionEnabled = true
+        textView.isEditable = false
+        textView.dataDetectorTypes = .all
+        
+        let padding = textView.textContainer.lineFragmentPadding
+        textView.textContainerInset = UIEdgeInsets.init(top: 0, left: 0, bottom: -padding, right: -padding)
+        return textView
     }()
     
     let showFullTextButton: UIButton = {
@@ -178,9 +183,9 @@ final class NewsFeedCodeCell: UITableViewCell {
         self.repostLabel.text = viewModel.shares
         self.likesLabel.text = viewModel.likes
         self.commentsLabel.text = viewModel.comments
-        self.postsLabel.text = viewModel.post
+        self.repostTextView.text = viewModel.post
         
-        postsLabel.frame = viewModel.sizes.postLabelFrame
+        repostTextView.frame = viewModel.sizes.postLabelFrame
         bottomView.frame = viewModel.sizes.bottonViewFrame
         showFullTextButton.frame = viewModel.sizes.showFullTextButtonFrame
         
@@ -199,8 +204,7 @@ final class NewsFeedCodeCell: UITableViewCell {
             galleryCollectionView.isHidden = true
         }
     }
-    
-    
+
     //MARK: Init()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -231,7 +235,6 @@ final class NewsFeedCodeCell: UITableViewCell {
         cardView.fillSuperview(padding: Constants.cardInsets)
     }
     
-    
     //MARK: overlay second view
     private func overlaySecondLayer() {
         // top view constreints
@@ -243,7 +246,7 @@ final class NewsFeedCodeCell: UITableViewCell {
                        padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8),
                        size: CGSize(width: 0, height: Constants.topViewHeight))
         
-        cardView.addSubview(postsLabel)
+        cardView.addSubview(repostTextView)
         cardView.addSubview(postImageView)
         cardView.addSubview(showFullTextButton)
         cardView.addSubview(bottomView)

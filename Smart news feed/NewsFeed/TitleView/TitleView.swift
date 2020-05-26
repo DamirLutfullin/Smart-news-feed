@@ -16,7 +16,7 @@ class TitleView: UIView {
     let myAvatarView: WebImageView = {
         let view = WebImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         view.contentMode = .scaleAspectFill
         return view
     }()
