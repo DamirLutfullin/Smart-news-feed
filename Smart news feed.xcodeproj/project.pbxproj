@@ -122,6 +122,9 @@
 		19708F2E2463DBFD00861C1F /* VKFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */; };
 		197A0A8F2462961E00B01EF0 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; };
 		197A0A902462961E00B01EF0 /* VKSdkFramework.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		197D2635247CE2A3007D4817 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D2634247CE2A3007D4817 /* TitleView.swift */; };
+		197D2637247CE71D007D4817 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D2636247CE71D007D4817 /* MyTextField.swift */; };
+		197D2639247CFB1D007D4817 /* VKFeedUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D2638247CFB1D007D4817 /* VKFeedUserResponse.swift */; };
 		199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */; };
 		199EAE12246563DC00E0EEAC /* VKNewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */; };
 		199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EAE142465E14000E0EEAC /* WebImageView.swift */; };
@@ -264,6 +267,9 @@
 		1964567F24655A6200C98E5B /* VKNewsFeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VKNewsFeedViewController.storyboard; sourceTree = "<group>"; };
 		19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFeedResponse.swift; sourceTree = "<group>"; };
 		197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
+		197D2634247CE2A3007D4817 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		197D2636247CE71D007D4817 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
+		197D2638247CFB1D007D4817 /* VKFeedUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFeedUserResponse.swift; sourceTree = "<group>"; };
 		199EAE0F246563DC00E0EEAC /* VKNewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsFeedCell.swift; sourceTree = "<group>"; };
 		199EAE10246563DC00E0EEAC /* VKNewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VKNewsFeedCell.xib; sourceTree = "<group>"; };
 		199EAE142465E14000E0EEAC /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
@@ -424,6 +430,7 @@
 		196456702464655F00C98E5B /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				197D2633247CE211007D4817 /* TitleView */,
 				19708F2F2463DC0A00861C1F /* Models */,
 				1980BABC246EE69600FB0D53 /* Galery group */,
 				199EAE0E2465639900E0EEAC /* NewsFeedCell */,
@@ -442,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */,
+				197D2638247CFB1D007D4817 /* VKFeedUserResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +462,15 @@
 				19B7D1F2245A9A9F00824A24 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		197D2633247CE211007D4817 /* TitleView */ = {
+			isa = PBXGroup;
+			children = (
+				197D2634247CE2A3007D4817 /* TitleView.swift */,
+				197D2636247CE71D007D4817 /* MyTextField.swift */,
+			);
+			path = TitleView;
 			sourceTree = "<group>";
 		};
 		1980BABC246EE69600FB0D53 /* Galery group */ = {
@@ -723,6 +740,7 @@
 				193931E42475C1040010C5A9 /* ItemLayout.swift in Sources */,
 				19DB6F5924675693005D0806 /* Constreints.swift in Sources */,
 				19645678246465A100C98E5B /* VKNewsFeedPresenter.swift in Sources */,
+				197D2637247CE71D007D4817 /* MyTextField.swift in Sources */,
 				199EAE152465E14000E0EEAC /* WebImageView.swift in Sources */,
 				199EAE11246563DC00E0EEAC /* VKNewsFeedCell.swift in Sources */,
 				193931E22475C0EA0010C5A9 /* GalleryCollectionViewCell.swift in Sources */,
@@ -734,10 +752,12 @@
 				19DB6F5724674780005D0806 /* VKNewsFeedCodeCell.swift in Sources */,
 				1964567A246465A100C98E5B /* VKNewsFeedRouter.swift in Sources */,
 				19645679246465A100C98E5B /* VKNewsFeedWorker.swift in Sources */,
+				197D2635247CE2A3007D4817 /* TitleView.swift in Sources */,
 				1964567B246465A100C98E5B /* VKNewsFeedModels.swift in Sources */,
 				191933472466E29700450C8F /* String + Height.swift in Sources */,
 				19708F2E2463DBFD00861C1F /* VKFeedResponse.swift in Sources */,
 				1964567C246465A100C98E5B /* VKNewsFeedViewController.swift in Sources */,
+				197D2639247CFB1D007D4817 /* VKFeedUserResponse.swift in Sources */,
 				1949D59D2462D27D00DB776D /* FeedViewController.swift in Sources */,
 				1933A5402463063B0099DC6C /* VKAPI.swift in Sources */,
 				1964566F24640A1E00C98E5B /* NetworkDataFetcher.swift in Sources */,

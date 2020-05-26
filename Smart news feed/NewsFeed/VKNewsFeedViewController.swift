@@ -17,6 +17,7 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
   var interactor: VKNewsFeedBusinessLogic?
   var router: (NSObjectProtocol & VKNewsFeedRoutingLogic)?
     private var feedViewModel = FeedViewModel(cells: [])
+    private var titleView = TitleView()
     
     @IBOutlet var table: UITableView!
     
@@ -42,6 +43,7 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
+    setupTopBars()
     table.register(UINib(nibName: "VKNewsFeedCell", bundle: nil), forCellReuseIdentifier: VKNewsFeedCell.reuseId)
     table.register(NewsFeedCodeCell.self, forCellReuseIdentifier: NewsFeedCodeCell.reuseId)
     interactor?.makeRequest(request: .getNewsFeed)
@@ -49,6 +51,13 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     table.backgroundColor = .clear
     view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
   }
+    
+    private func setupTopBars() {
+        self.navigationController?.hidesBarsOnSwipe = true // скрываем бар при листании вниз
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.titleView = titleView
+        
+    }
   
   func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData) {
     switch viewModel {
