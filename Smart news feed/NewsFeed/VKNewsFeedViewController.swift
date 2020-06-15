@@ -51,16 +51,24 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     setup()
     setupTopBars()
     setupTableView()
-    view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
     
     interactor?.makeRequest(request: .getNewsFeed)
     interactor?.makeRequest(request: .getUserPhotoUrl)
     }
     
     private func setupTopBars() {
+        let topBar = UIView(frame: UIApplication.shared.statusBarFrame)
+        self.view.addSubview(topBar)
+        topBar.backgroundColor = .white
+        topBar.layer.shadowColor = UIColor.black.cgColor
+        topBar.layer.shadowOpacity = 0.3
+        topBar.layer.shadowOffset = CGSize.zero
+        topBar.layer.shadowRadius = 8
         self.navigationController?.hidesBarsOnSwipe = true // скрываем бар при листании вниз
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.titleView = titleView
+        
+        
     }
     
     @objc private func refresh() {
