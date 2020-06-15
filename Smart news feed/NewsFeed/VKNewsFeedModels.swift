@@ -23,12 +23,14 @@ enum VKNewsFeed {
             enum ResponseType {
                 case presentNewsFeed (feedResponse: FeedResponse, revealdedPostIds: [Int])
                 case presentUserPhoto (photoUrl: String)
+                case presentFooterLoader
             }
         }
         struct ViewModel {
             enum ViewModelData {
                 case displayNewsFeed(feedViewModel: FeedViewModel)
                 case displayUsersPhoto(photoUrl: String)
+                case displayFooterLoader
             }
         }
     }
@@ -57,4 +59,5 @@ struct FeedViewModel {
     }
     
     let cells: [Cell]
+    let footerTitle: String?
 }

@@ -30,11 +30,15 @@ class VKNewsFeedPresenter: VKNewsFeedPresentationLogic {
             let cells = feedResponse.items.map({ feedItem in
                 cellViewModel(from: feedItem, profiles: feedResponse.profiles, groups: feedResponse.groups, revealdedPostIds: revealdedPostsIds)
             })
-            let feedViewModel = FeedViewModel.init(cells: cells)
+            
+            let footerTitle = String.localizedStringWithFormat(NSLocalizedString("news feed cells count", comment: ""), cells.count)
+            let feedViewModel = FeedViewModel.init(cells: cells, footerTitle: footerTitle)
             viewController?.displayData(viewModel: .displayNewsFeed(feedViewModel: feedViewModel))
         case .presentUserPhoto(photoUrl: let photoUrl):
             print(".presentUserPhoto photo url is " + photoUrl)
             viewController?.displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData.displayUsersPhoto(photoUrl: photoUrl))
+        case .presentFooterLoader:
+            viewController?.displayData(viewModel: .displayFooterLoader)
         }
     }
     

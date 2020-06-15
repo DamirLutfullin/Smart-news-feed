@@ -36,7 +36,7 @@ class VKNewsFeedInteractor: VKNewsFeedBusinessLogic {
                 self?.presenter?.presentData(response: .presentUserPhoto(photoUrl: (user?.photo100)!))
             })
         case .getNewsBatch:
-            print("123")
+            self.presenter?.presentData(response: .presentFooterLoader)
             service?.getNewsBatch(completion: { (revealedPostIds, feed) in
                 self.presenter?.presentData(response: .presentNewsFeed(feedResponse: feed, revealdedPostIds: revealedPostIds))
             })

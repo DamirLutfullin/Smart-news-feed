@@ -16,8 +16,9 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     
   var interactor: VKNewsFeedBusinessLogic?
   var router: (NSObjectProtocol & VKNewsFeedRoutingLogic)?
-    private var feedViewModel = FeedViewModel(cells: [])
+    private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
     private var titleView = TitleView()
+    private lazy var footerView = FooterView()
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -72,6 +73,7 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
         table.separatorStyle = .none
         table.backgroundColor = .clear
         table.refreshControl = refreshControl
+        table.tableFooterView = footerView
     }
     
     func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData) {
@@ -79,10 +81,13 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
         case .displayNewsFeed(feedViewModel: let feedViewModel):
             self.feedViewModel = feedViewModel
             table.reloadData()
+            footerView.setTitle(title: feedViewModel.footerTitle)
             refreshControl.endRefreshing()
         case .displayUsersPhoto(photoUrl: let photoUrl):
             print(".displayUsersPhoto")
             self.titleView.myAvatarView.set(imageURL: photoUrl)
+        case .displayFooterLoader:
+            footerView.showLoader()
         }
     }
     
