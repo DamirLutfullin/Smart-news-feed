@@ -16,6 +16,7 @@ struct FeedResponse: Decodable {
     var items: [VKFeedItem]
     var profiles: [Profile]
     var groups: [Group]
+    var nextFrom : String?
 }
 
 protocol ProfileRepresentable {
@@ -39,7 +40,6 @@ struct Group: Decodable, ProfileRepresentable {
     let id: Int
     let name: String
     let photo100: String
-    
     var photo: String { return photo100 }
 }
 

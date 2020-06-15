@@ -85,6 +85,12 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
             self.titleView.myAvatarView.set(imageURL: photoUrl)
         }
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
+            interactor?.makeRequest(request: .getNewsBatch)
+        }
+    }
 }
 
 extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, ShowFullTextButtonDelegate {

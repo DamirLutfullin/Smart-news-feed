@@ -16,6 +16,7 @@ enum VKNewsFeed {
                 case getNewsFeed
                 case revealCellFromPostId(postId: Int)
                 case getUserPhotoUrl
+                case getNewsBatch
             }
         }
         struct Response {
