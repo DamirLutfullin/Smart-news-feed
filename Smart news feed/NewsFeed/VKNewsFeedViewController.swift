@@ -57,7 +57,8 @@ class VKNewsFeedViewController: UIViewController, VKNewsFeedDisplayLogic {
     }
     
     private func setupTopBars() {
-        let topBar = UIView(frame: UIApplication.shared.statusBarFrame)
+        let rectForTopBar = view.window?.windowScene?.statusBarManager?.statusBarFrame
+        let topBar = UIView(frame: rectForTopBar ?? CGRect.zero)
         self.view.addSubview(topBar)
         topBar.backgroundColor = .white
         topBar.layer.shadowColor = UIColor.black.cgColor
@@ -119,8 +120,6 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = table.dequeueReusableCell(withIdentifier: VKNewsFeedCell.reuseId, for: indexPath) as! VKNewsFeedCell
-//        cell.set(viewModel: feedViewModel.cells[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCodeCell.reuseId, for: indexPath) as! NewsFeedCodeCell
         cell.showFullTextDelegate = self
         cell.set(viewModel: feedViewModel.cells[indexPath.row])
@@ -130,8 +129,6 @@ extension VKNewsFeedViewController: UITableViewDelegate, UITableViewDataSource, 
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let cellViewModel = feedViewModel.cells[indexPath.row]
-//        return cellViewModel.sizes.totalHeight
         feedViewModel.cells[indexPath.row].sizes.totalHeight
     }
     

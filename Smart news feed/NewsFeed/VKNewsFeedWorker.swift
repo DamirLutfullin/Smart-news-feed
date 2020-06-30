@@ -68,7 +68,7 @@ class VKNewsFeedService {
                 
                 var groups = feed.groups
                 if let oldGroups = self?.feedResponse?.groups {
-                    let oldGropusFiltered = oldGroups.filter { (oldGroup) -> Bool in
+                    let _ = oldGroups.filter { (oldGroup) -> Bool in
                         !feed.groups.contains(where: {$0.id == oldGroup.id })
                     }
                     groups.append(contentsOf: oldGroups)
