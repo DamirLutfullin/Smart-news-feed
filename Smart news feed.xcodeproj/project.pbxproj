@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -123,8 +123,6 @@
 		1964567D246465A100C98E5B /* VKNewsFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19645676246465A100C98E5B /* VKNewsFeedInteractor.swift */; };
 		1964568024655A6200C98E5B /* VKNewsFeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1964567F24655A6200C98E5B /* VKNewsFeedViewController.storyboard */; };
 		19708F2E2463DBFD00861C1F /* VKFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */; };
-		197A0A8F2462961E00B01EF0 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; };
-		197A0A902462961E00B01EF0 /* VKSdkFramework.framework in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		197D2635247CE2A3007D4817 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D2634247CE2A3007D4817 /* TitleView.swift */; };
 		197D2637247CE71D007D4817 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D2636247CE71D007D4817 /* MyTextField.swift */; };
 		197D2639247CFB1D007D4817 /* VKFeedUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197D2638247CFB1D007D4817 /* VKFeedUserResponse.swift */; };
@@ -139,18 +137,20 @@
 		19B7D1F1245A9A9F00824A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19B7D1EF245A9A9F00824A24 /* LaunchScreen.storyboard */; };
 		19DB6F5724674780005D0806 /* VKNewsFeedCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB6F5624674780005D0806 /* VKNewsFeedCodeCell.swift */; };
 		19DB6F5924675693005D0806 /* Constreints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DB6F5824675693005D0806 /* Constreints.swift */; };
+		30C8733E2698B6A200B70B9E /* VKSdkFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30C873392698B66400B70B9E /* VKSdkFramework.xcframework */; };
+		30C8733F2698B6A200B70B9E /* VKSdkFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30C873392698B66400B70B9E /* VKSdkFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		19D9C743245ABA6D009B42B4 /* Embed Libraries */ = {
+		30C873402698B6A200B70B9E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				197A0A902462961E00B01EF0 /* VKSdkFramework.framework in Embed Libraries */,
+				30C8733F2698B6A200B70B9E /* VKSdkFramework.xcframework in Embed Frameworks */,
 			);
-			name = "Embed Libraries";
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -289,6 +289,8 @@
 		19B7D1F2245A9A9F00824A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19DB6F5624674780005D0806 /* VKNewsFeedCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsFeedCodeCell.swift; sourceTree = "<group>"; };
 		19DB6F5824675693005D0806 /* Constreints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constreints.swift; sourceTree = "<group>"; };
+		30C873392698B66400B70B9E /* VKSdkFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VKSdkFramework.xcframework; path = Carthage/Build/VKSdkFramework.xcframework; sourceTree = "<group>"; };
+		30C8733D2698B69100B70B9E /* vk-ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "vk-ios-sdk"; path = "Carthage/Checkouts/vk-ios-sdk"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +298,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				197A0A8F2462961E00B01EF0 /* VKSdkFramework.framework in Frameworks */,
+				30C8733E2698B6A200B70B9E /* VKSdkFramework.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +559,8 @@
 		19D9C739245AB834009B42B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30C8733D2698B69100B70B9E /* vk-ios-sdk */,
+				30C873392698B66400B70B9E /* VKSdkFramework.xcframework */,
 				197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */,
 			);
 			name = Frameworks;
@@ -572,8 +576,8 @@
 				19B7D1DD245A9A9A00824A24 /* Sources */,
 				19B7D1DE245A9A9A00824A24 /* Frameworks */,
 				19B7D1DF245A9A9A00824A24 /* Resources */,
-				19D9C743245ABA6D009B42B4 /* Embed Libraries */,
 				19176280245AED270078575E /* Carthage */,
+				30C873402698B6A200B70B9E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -591,7 +595,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = DamirLutfullin;
 				TargetAttributes = {
 					19B7D1E0245A9A9A00824A24 = {
@@ -827,6 +831,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -887,6 +892,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

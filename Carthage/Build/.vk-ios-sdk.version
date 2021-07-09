@@ -8,11 +8,19 @@
   "tvOS" : [
 
   ],
-  "commitish" : "1.5.1",
+  "commitish" : "1.6.2",
   "iOS" : [
     {
+      "hash" : "ff7bd379f32333775865cd87d741de74e39f2fdc453410a8fd853ad8908aa96c",
       "name" : "VKSdkFramework",
-      "hash" : "b04d6ba97e14b1032f90f9ce579962d1814dc40826b5fbc74f248358b7751a28"
+      "container" : "VKSdkFramework.xcframework",
+      "identifier" : "ios-arm64_i386_x86_64-simulator"
+    },
+    {
+      "hash" : "d06a1627a06bbdf46b515332c3c681aeaae6b770c7b57a0ce99d9021c1105927",
+      "name" : "VKSdkFramework",
+      "container" : "VKSdkFramework.xcframework",
+      "identifier" : "ios-arm64_armv7"
     }
   ]
 }
