@@ -272,7 +272,6 @@
 		19645676246465A100C98E5B /* VKNewsFeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsFeedInteractor.swift; sourceTree = "<group>"; };
 		1964567F24655A6200C98E5B /* VKNewsFeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VKNewsFeedViewController.storyboard; sourceTree = "<group>"; };
 		19708F2D2463DBFD00861C1F /* VKFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFeedResponse.swift; sourceTree = "<group>"; };
-		197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		197D2634247CE2A3007D4817 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		197D2636247CE71D007D4817 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 		197D2638247CFB1D007D4817 /* VKFeedUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFeedUserResponse.swift; sourceTree = "<group>"; };
@@ -561,7 +560,6 @@
 			children = (
 				30C8733D2698B69100B70B9E /* vk-ios-sdk */,
 				30C873392698B66400B70B9E /* VKSdkFramework.xcframework */,
-				197A0A8E2462961E00B01EF0 /* VKSdkFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
