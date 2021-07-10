@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GalleryCollectionViewCustomLayoutDelegate: class {
+protocol GalleryCollectionViewCustomLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, atIndexPath indexPath: IndexPath) -> CGSize
 }
 

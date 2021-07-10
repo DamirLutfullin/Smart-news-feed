@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ShowFullTextButtonDelegate: class {
+protocol ShowFullTextButtonDelegate: AnyObject {
     func revealText(cell: NewsFeedCodeCell)
 }
 
@@ -22,7 +22,7 @@ final class NewsFeedCodeCell: UITableViewCell {
     //MARK: first layer
     let cardView: UIView = {
         let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false // чтобы разрешить компилятору закреплять данный вью на экране
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         view.layer.cornerRadius = 15
         return view

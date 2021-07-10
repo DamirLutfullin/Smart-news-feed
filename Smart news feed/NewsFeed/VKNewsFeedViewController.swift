@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol VKNewsFeedDisplayLogic: class {
+protocol VKNewsFeedDisplayLogic: AnyObject {
     func displayData(viewModel: VKNewsFeed.Model.ViewModel.ViewModelData)
 }
 
